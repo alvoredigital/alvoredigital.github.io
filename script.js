@@ -231,3 +231,21 @@ document.addEventListener('DOMContentLoaded', function() {
         offset: 100
     });
 });
+
+// scroll section
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.scroll-section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    function changeLinkState() {
+        let index = sections.length;
+
+        while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+        
+        navLinks.forEach((link) => link.classList.remove('active'));
+        navLinks[index].classList.add('active');
+    }
+
+    changeLinkState();
+    window.addEventListener('scroll', changeLinkState);
+});

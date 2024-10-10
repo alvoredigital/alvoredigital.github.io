@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insite Digital - Soluções em Marketing Digital</title>
-    <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 769px)" >
-    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
@@ -41,7 +41,7 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero scroll-section">
             <div class="container">
                 <h1>Transforme sua presença digital</h1>
                 <p>Soluções personalizadas em marketing digital para impulsionar seu negócio</p>
@@ -49,7 +49,7 @@
             </div>
         </section>
 
-        <section id="servicos">
+        <section id="servicos" class="scroll-section">
             <div class="container">
                 <h2 data-aos="fade-up">Nossos Serviços</h2>
                 <div class="services-grid">
@@ -129,7 +129,7 @@
             </div>
         </section>
 
-        <section id="sobre">
+        <section id="sobre" class="scroll-section">
             <div class="container">
                 <h2 data-aos="fade-up">Sobre a Insite Digital</h2>
                 <div class="about-content">
@@ -159,7 +159,7 @@
             </div>
         </section>
 
-        <section id="pacotes">
+        <section id="pacotes" class="scroll-section">
             <div class="container">
                 <h2 data-aos="fade-up">Nossos Pacotes</h2>
                 <div class="pacotes-grid">
@@ -199,7 +199,7 @@
             </div>
         </section>
 
-        <section id="valores">
+        <section id="valores" class="scroll-section">
             <div class="container">
                 <h2 data-aos="fade-up">Valores</h2>
                 <div class="valores-grid">
@@ -231,7 +231,7 @@
             </div>
         </section>
 
-        <section id="blog">
+        <section id="blog" class="scroll-section">
             <div class="container">
                 <h2>Blog</h2>
                 <div class="blog-grid">
@@ -260,7 +260,7 @@
             </div>
         </section>
 
-        <section id="contato">
+        <section id="contato" class="scroll-section">
             <div class="container">
                 <h2>Entre em Contato</h2>
                 <div class="contact-content">
@@ -337,7 +337,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Insite Digital. Todos os direitos reservados.</p>
+                <p>&copy; <span id="current-year"></span> <span class="nome-empresa">Alvore Digital</span>. Todos os direitos reservados.</p>
                 <ul>
                     <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                     <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -348,8 +348,13 @@
     <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
         <span class="sr-only">Chat on WhatsApp</span>
-     </a>
+    </a>
 
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
