@@ -25,6 +25,20 @@
    box-sizing: border-box;
 }
 
+/* Smooth Scroll */
+html {
+   scroll-behavior: smooth;
+}
+
+/* Estilos para animações AOS */
+[data-aos] {
+   pointer-events: none;
+}
+
+[data-aos].aos-animate {
+   pointer-events: auto;
+}
+
 body {
    font-family: 'Poppins', Arial, sans-serif;
    line-height: 1.6;
@@ -662,16 +676,3 @@ footer {
    background-color: var(--hover-color);
 }
 
-/* Smooth Scroll */
-html {
-   scroll-behavior: smooth;
-}
-
-/* Estilos para animações AOS */
-[data-aos] {
-   pointer-events: none;
-}
-
-[data-aos].aos-animate {
-   pointer-events: auto;
-}
