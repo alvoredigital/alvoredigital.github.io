@@ -1,0 +1,52 @@
+/* Estilos para dispositivos móveis */
+
+.header {
+   padding: 10px 0;
+}
+
+.header .container {
+   flex-direction: column;
+}
+
+.logo {
+   margin-bottom: 10px;
+}
+
+.nav ul {
+   flex-direction: column;
+   align-items: center;
+}
+
+.nav ul li {
+   margin: 10px 0;
+}
+
+section {
+   padding: 50px 0;
+}
+
+.banner {
+   height: auto;
+   padding: 100px 0;
+}
+
+.banner h1 {
+   font-size: 36px;
+}
+
+.banner p {
+   font-size: 18px;
+}
+
+.servicos-grid,
+.portfolio-grid {
+   grid-template-columns: 1fr;
+}
+
+.portfolio-item {
+   margin-bottom: 20px;
+}
+
+#contato-form {
+   padding: 0 20px;
+}
