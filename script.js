@@ -220,11 +220,9 @@ if (!getCookie('cookies-accepted')) {
 
 // Inicialização do AOS
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth > 768) {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-    }
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
 });
