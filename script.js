@@ -1,9 +1,11 @@
-// Menu toggle para dispositivos móveis
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
+const navMenu = document.querySelector('nav ul');
 
 menuToggle.addEventListener('click', () => {
     nav.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active'); // Adiciona a classe .active ao menu-toggle
 });
 
 // Fechar menu ao clicar em um link
@@ -12,8 +14,11 @@ const navLinks = document.querySelectorAll('nav ul li a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         nav.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active'); // Remove a classe .active ao fechar
     });
 });
+
 
 // Smooth scrolling para links internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
