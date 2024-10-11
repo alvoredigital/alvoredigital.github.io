@@ -7,42 +7,108 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Blog Alvore Digital</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Alvore Digital</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button id="darkModeToggle">Dark Mode</button> <!-- Botão de Dark Mode -->
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Bem-vindo ao Alvore Digital</h2>
+        <p>As últimas novidades sobre tecnologia, inovação, marketing e muito mais!</p>
+    </section>
+
+    <!-- Main Content -->
     <main class="container">
         <section class="posts">
-            <h2>Últimos Posts</h2>
-            <div id="postContainer"></div>
-            <button id="loadMore">Carregar mais</button>
+            <div class="post-card">
+                <img src="https://source.unsplash.com/featured/?technology" alt="Post Image">
+                <div class="post-card-content">
+                    <h3>10 Dicas de SEO para Aumentar o Tráfego Orgânico</h3>
+                    <div class="post-meta">01 Mar 2024 | Ana Silva | SEO</div>
+                    <p>Aprenda estratégias eficazes para melhorar o SEO do seu site e aumentar o tráfego orgânico.</p>
+                    <a href="posts/post1.html">Ler mais</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://source.unsplash.com/featured/?socialmedia" alt="Post Image">
+                <div class="post-card-content">
+                    <h3>Como Criar uma Estratégia de Redes Sociais Eficiente</h3>
+                    <div class="post-meta">05 Mar 2024 | Carlos Santos | Redes Sociais</div>
+                    <p>Descubra as melhores práticas para desenvolver uma estratégia de redes sociais que gera resultados.</p>
+                    <a href="posts/post2.html">Ler mais</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://source.unsplash.com/featured/?emailmarketing" alt="Post Image">
+                <div class="post-card-content">
+                    <h3>E-mail Marketing: 5 Táticas para Aumentar suas Taxas de Conversão</h3>
+                    <div class="post-meta">10 Mar 2024 | Mariana Oliveira | E-mail Marketing</div>
+                    <p>Aprenda táticas comprovadas para melhorar suas campanhas de e-mail marketing e aumentar as conversões.</p>
+                    <a href="posts/post3.html">Ler mais</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://source.unsplash.com/featured/?dataanalysis" alt="Post Image">
+                <div class="post-card-content">
+                    <h3>A Importância da Análise de Dados no Marketing Digital</h3>
+                    <div class="post-meta">15 Mar 2024 | Pedro Almeida | Análise de Dados</div>
+                    <p>Entenda como a análise de dados pode impulsionar suas estratégias de marketing digital e melhorar os resultados.</p>
+                    <a href="posts/post4.html">Ler mais</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <img src="https://source.unsplash.com/featured/?contentmarketing" alt="Post Image">
+                <div class="post-card-content">
+                    <h3>Content Marketing: Como Criar Conteúdo que Engaja e Converte</h3>
+                    <div class="post-meta">20 Mar 2024 | Juliana Costa | Content Marketing</div>
+                    <p>Descubra as melhores práticas para criar conteúdo relevante que atrai, engaja e converte sua audiência.</p>
+                    <a href="posts/post5.html">Ler mais</a>
+                </div>
+            </div>
         </section>
 
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <section class="recent-posts">
+            <section>
                 <h3>Posts Recentes</h3>
-                <ul id="recentPosts"></ul>
+                <ul>
+                    <li><a href="#">10 Dicas de SEO para Aumentar o Tráfego Orgânico</a></li>
+                    <li><a href="#">Como Criar uma Estratégia de Redes Sociais Eficiente</a></li>
+                    <li><a href="#">E-mail Marketing: 5 Táticas para Aumentar suas Taxas de Conversão</a></li>
+                    <li><a href="#">A Importância da Análise de Dados no Marketing Digital</a></li>
+                    <li><a href="#">Content Marketing: Como Criar Conteúdo que Engaja e Converte</a></li>
+                </ul>
             </section>
-            <section class="categories">
+            <section>
                 <h3>Categorias</h3>
-                <ul id="categoriesList"></ul>
+                <ul>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Redes Sociais</a></li>
+                    <li><a href="#">E-mail Marketing</a></li>
+                    <li><a href="#">Análise de Dados</a></li>
+                    <li><a href="#">Content Marketing</a></li>
+                </ul>
             </section>
         </aside>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
-        </div>
+        <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>

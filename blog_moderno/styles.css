@@ -1,0 +1,256 @@
+:root {
+   --primary-color: #4a90e2;
+   --secondary-color: #f39c12;
+   --bg-color: #ffffff;
+   --text-color: #333333;
+   --header-bg: #4a90e2;
+   --header-text: #ffffff;
+}
+
+body {
+   font-family: 'Arial', sans-serif;
+   line-height: 1.6;
+   margin: 0;
+   padding: 0;
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+   width: 90%;
+   max-width: 1200px;
+   margin: auto;
+   overflow: hidden;
+   padding: 0 20px;
+}
+
+header {
+   background-color: var(--header-bg);
+   color: var(--header-text);
+   padding: 15px 0;
+   border-bottom: 3px solid var(--secondary-color);
+}
+
+header .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+header h1 {
+   margin: 0;
+   font-size: 1.5em;
+}
+
+header a {
+   color: var(--header-text);
+   text-decoration: none;
+   text-transform: uppercase;
+   font-size: 14px;
+}
+
+header ul {
+   padding: 0;
+   list-style: none;
+   display: flex;
+}
+
+header li {
+   margin-left: 20px;
+}
+
+header .highlight, header .current a {
+   color: var(--secondary-color);
+   font-weight: bold;
+}
+
+header a:hover {
+   color: var(--secondary-color);
+   font-weight: bold;
+}
+
+.main-content {
+   display: flex;
+   margin-top: 20px;
+}
+
+main {
+   flex: 1;
+   margin-right: 20px;
+}
+
+#featured-post {
+   margin-bottom: 20px;
+}
+
+.post {
+   background: #f4f4f4;
+   padding: 15px;
+   margin-bottom: 20px;
+   border-radius: 5px;
+}
+
+.post img {
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 5px;
+}
+
+.post h2 {
+   font-size: 1.2em;
+   margin-top: 10px;
+}
+
+.post .meta {
+   font-size: 0.8em;
+   color: #666;
+}
+
+.post p {
+   font-size: 0.9em;
+   margin: 10px 0;
+}
+
+.read-more {
+   display: inline-block;
+   background-color: var(--primary-color);
+   color: white;
+   padding: 5px 10px;
+   text-decoration: none;
+   border-radius: 3px;
+   font-size: 0.8em;
+}
+
+.sidebar {
+   width: 25%;
+   background: #f4f4f4;
+   padding: 15px;
+   border-radius: 5px;
+}
+
+.widget {
+   margin-bottom: 20px;
+}
+
+.widget h3 {
+   margin-top: 0;
+   font-size: 1.1em;
+}
+
+.widget ul {
+   padding-left: 20px;
+}
+
+.widget li {
+   margin-bottom: 5px;
+}
+
+footer {
+   background-color: var(--header-bg);
+   color: var(--header-text);
+   text-align: center;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+#dark-mode-toggle {
+   position: fixed;
+   top: 20px;
+   right: 20px;
+   background-color: var(--secondary-color);
+   color: white;
+   border: none;
+   padding: 10px;
+   border-radius: 50%;
+   cursor: pointer;
+   font-size: 18px;
+}
+
+.dark-mode {
+   --bg-color: #333333;
+   --text-color: #ffffff;
+   --header-bg: #1a1a1a;
+}
+
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+   background-color: var(--bg-color);
+   margin: 15% auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 500px;
+}
+
+.close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+form input, form textarea {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+form button {
+   background-color: var(--primary-color);
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+}
+
+form button:hover {
+   background-color: var(--secondary-color);
+}
+
+@media(max-width: 768px) {
+   .main-content {
+       flex-direction: column;
+   }
+
+   main {
+       margin-right: 0;
+   }
+
+   .sidebar {
+       width: 100%;
+       margin-top: 20px;
+   }
+
+   header .container {
+       flex-direction: column;
+   }
+
+   header ul {
+       margin-top: 10px;
+   }
+
+   header li {
+       margin: 0 10px;
+   }
+}
