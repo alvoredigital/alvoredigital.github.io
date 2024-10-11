@@ -229,7 +229,7 @@ html:not(.dark) .mode-toggle .fa-sun {
    background-color: var(--hover-color);
 }
 
-/* Hero Section */
+/* Hero Section with Typing Animation */
 .hero {
    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
    background-size: cover;
@@ -238,7 +238,15 @@ html:not(.dark) .mode-toggle .fa-sun {
    display: flex;
    align-items: center;
    text-align: center;
-   color: #ccc;
+   color: #ffffff;
+}
+
+.hero-content {
+   max-width: 800px;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .hero h1 {
@@ -247,29 +255,48 @@ html:not(.dark) .mode-toggle .fa-sun {
    margin-bottom: 20px;
 }
 
-.hero p {
+.hero .typing-text {
    font-size: 24px;
    margin-bottom: 30px;
+   height: 60px; /* Fixed height for two lines of text */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.typing-animation {
+   max-width: 100%;
+   overflow: hidden;
+   white-space: normal; /* Allow text to wrap */
+   word-wrap: break-word; /* Break long words if necessary */
+}
+
+.typing-animation::after {
+   content: '|';
+   animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+   0% { opacity: 1; }
+   50% { opacity: 0; }
+   100% { opacity: 1; }
 }
 
 .cta-button {
    display: inline-block;
    background-color: var(--primary-color);
-   color: var(--background-color);
-   padding: 12px 30px;
+   color: #ffffff;
+   padding: 15px 30px;
    border-radius: 5px;
    text-decoration: none;
    font-weight: bold;
-   transition: background-color 0.3s ease, border 0.3s ease;
+   transition: background-color 0.3s ease;
    font-size: 18px;
-   margin-top: 30px;
-   box-sizing: border-box;
-   border: 2px solid transparent;
+   margin-top: 50px; /* Add some space above the button */
 }
 
 .cta-button:hover {
    background-color: var(--hover-color);
-   border-color: var(--border-button-color);
 }
 
 /* Sections */

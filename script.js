@@ -232,6 +232,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Typing Script
+document.addEventListener('DOMContentLoaded', function() {
+    const phrases = [
+        "Soluções personalizadas em marketing digital para seu negócio",
+        "Estratégias inovadoras para sua presença online",
+        "Resultados mensuráveis e crescimento sustentável"
+    ];
+    const typingText = document.querySelector('.typing-animation');
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 50;
+
+    function typePhrase() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 30;
+        } else {
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 50;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 1000; // Pause before starting to delete
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500; // Pause before typing next phrase
+        }
+
+        setTimeout(typePhrase, typingSpeed);
+    }
+
+    typePhrase();
+});
+
 // scroll section
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.scroll-section');

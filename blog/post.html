@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - Alvore Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .post-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .post-content h1 {
+            color: #0066cc;
+            
+            margin-bottom: 1rem;
+        }
+        .post-meta {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .contact-form {
+            background-color: #f4f4f4;
+            padding: 2rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+        .contact-form h2 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+        .contact-form form {
+            display: grid;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .contact-form button {
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Blog Alvore Digital</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="post-content">
+            <h1 id="postTitle"></h1>
+            <div id="postMeta" class="post-meta"></div>
+            <div id="postContent"></div>
+        </article>
+
+        <section class="contact-form">
+            <h2>Quer ajuda com seu projeto?</h2>
+            <p>Entre em contato conosco para uma consulta gratuita!</p>
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Seu nome" required>
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <textarea name="message" placeholder="Sua mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function loadPost() {
+            const postId = parseInt(getUrlParameter('id'));
+            const post = posts.find(p => p.id === postId);
+
+            if (post) {
+                document.getElementById('postTitle').textContent = post.title;
+                document.getElementById('postMeta').textContent = `${post.date} | ${post.author} | ${post.category}`;
+                document.getElementById('postContent').innerHTML = `
+                    <p>${post.excerpt}</p>
+                    <p>Este é o conteúdo completo do post. Aqui você pode adicionar mais parágrafos, imagens, e outros elementos conforme necessário.</p>
+                `;
+            } else {
+                document.getElementById('postContent').innerHTML = '<p>Post não encontrado.</p>';
+            }
+        }
+
+        loadPost();
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu contato! Retornaremos em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

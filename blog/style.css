@@ -1,0 +1,196 @@
+/* Reset e estilos gerais */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Arial', sans-serif;
+   line-height: 1.6;
+   color: #333;
+   background-color: #f4f4f4;
+}
+
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+/* Header */
+header {
+   background-color: #fff;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   position: fixed;
+   width: 100%;
+   z-index: 1000;
+}
+
+header .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1rem 0;
+}
+
+header h1 {
+   font-size: 1.5rem;
+   color: #0066cc;
+}
+
+nav ul {
+   display: flex;
+   list-style: none;
+}
+
+nav ul li {
+   margin-left: 20px;
+}
+
+nav ul li a {
+   text-decoration: none;
+   color: #333;
+   font-weight: bold;
+   transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+   color: #0066cc;
+}
+
+/* Main content */
+main {
+   padding-top: 80px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+.posts {
+   flex: 2;
+   margin-right: 2rem;
+}
+
+.sidebar {
+   flex: 1;
+   min-width: 250px;
+}
+
+/* Post cards */
+.post-card {
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   margin-bottom: 2rem;
+   overflow: hidden;
+}
+
+.post-card-content {
+   padding: 1.5rem;
+}
+
+.post-card h3 {
+   font-size: 1.2rem;
+   margin-bottom: 0.5rem;
+   color: #0066cc;
+}
+
+.post-meta {
+   font-size: 0.8rem;
+   color: #666;
+   margin-bottom: 1rem;
+}
+
+.post-card p {
+   margin-bottom: 1rem;
+}
+
+.post-card a {
+   display: inline-block;
+   background-color: #0066cc;
+   color: #fff;
+   padding: 0.5rem 1rem;
+   text-decoration: none;
+   border-radius: 3px;
+   transition: background-color 0.3s ease;
+}
+
+.post-card a:hover {
+   background-color: #004499;
+}
+
+/* Sidebar */
+.sidebar section {
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   padding: 1.5rem;
+   margin-bottom: 2rem;
+}
+
+.sidebar h3 {
+   font-size: 1.2rem;
+   margin-bottom: 1rem;
+   color: #0066cc;
+}
+
+.sidebar ul {
+   list-style: none;
+}
+
+.sidebar ul li {
+   margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+   color: #333;
+   text-decoration: none;
+   transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+   color: #0066cc;
+}
+
+/* Load more button */
+#loadMore {
+   display: block;
+   margin: 2rem auto;
+   padding: 0.5rem 1rem;
+   background-color: #0066cc;
+   color: #fff;
+   border: none;
+   border-radius: 3px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#loadMore:hover {
+   background-color: #004499;
+}
+
+/* Footer */
+footer {
+   background-color: #333;
+   color: #fff;
+   text-align: center;
+   padding: 1rem 0;
+   margin-top: 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+   main {
+       flex-direction: column;
+   }
+
+   .posts {
+       margin-right: 0;
+       margin-bottom: 2rem;
+   }
+
+   .sidebar {
+       width: 100%;
+   }
+}
