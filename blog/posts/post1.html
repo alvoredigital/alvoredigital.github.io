@@ -4,109 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 Dicas de SEO para Aumentar o Tráfego Orgânico - Alvore Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
     <style>
         .post-content {
-            background-color: #fff;
+            background-color: var(--accent-color);
             padding: 2rem;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
         .post-content h1 {
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
-        .post-content h2 {
-            margin-top: 2rem;
+        .post-meta {
+            color: var(--text-color);
+            opacity: 0.7;
             margin-bottom: 1rem;
         }
-        .post-content p, .post-content ul, .post-content ol {
+        .post-image {
+            max-width: 100%;
+            height: auto;
             margin-bottom: 1rem;
-        }
-        .contact-form {
-            margin-top: 2rem;
-            background-color: #f4f4f4;
-            padding: 2rem;
             border-radius: 5px;
         }
-        .contact-form h2 {
+        .post-content h2 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
-        .contact-form form {
-            display: grid;
-            gap: 1rem;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-        }
-        .contact-form button {
-            background-color: #0066cc;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-            cursor: pointer;
+        .post-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Blog Alvore Digital</h1>
+            <a href="../index.html" class="logo">
+                <img src="/placeholder.svg?height=40&width=120" alt="Alvore Digital Logo">
+            </a>
             <nav>
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
                 </ul>
             </nav>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
         </div>
     </header>
 
     <main class="container">
         <article class="post-content">
             <h1>10 Dicas de SEO para Aumentar o Tráfego Orgânico</h1>
+            <div class="post-meta">2024-03-01 | Ana Silva | SEO</div>
+            <img src="/placeholder.svg?height=400&width=800" alt="SEO Illustration" class="post-image">
+            <p>Aprenda estratégias eficazes para melhorar o SEO do seu site e aumentar o tráfego orgânico. Neste artigo, compartilharemos 10 dicas essenciais que podem ajudar a impulsionar sua presença online e atrair mais visitantes qualificados para o seu site.</p>
             
-            <p>O Search Engine Optimization (SEO) é fundamental para aumentar a visibilidade do seu site nos mecanismos de busca. Neste artigo, vamos explorar 10 dicas essenciais de SEO que podem ajudar a aumentar o tráfego orgânico do seu site:</p>
-
-            <h2>1. Realize uma pesquisa de palavras-chave abrangente</h2>
-            <p>Identifique as palavras-chave relevantes para o seu negócio e que seu público-alvo está pesquisando. Use ferramentas como o Google Keyword Planner ou SEMrush para encontrar palavras-chave de cauda longa com menor concorrência.</p>
-
-            <h2>2. Otimize o conteúdo on-page</h2>
-            <p>Certifique-se de que suas palavras-chave estejam presentes no título, meta descrição, cabeçalhos e ao longo do conteúdo de forma natural. Não exagere no uso de palavras-chave para evitar penalizações.</p>
-
-            <h2>3. Melhore a velocidade de carregamento do site</h2>
-            <p>Um site rápido não só melhora a experiência do usuário, mas também é um fator de classificação para o Google. Otimize imagens, use cache de navegador e considere um CDN para melhorar a velocidade.</p>
-
-            <h2>4. Crie conteúdo de qualidade e relevante</h2>
-            <p>Publique conteúdo original, informativo e valioso para seu público. Conteúdo de qualidade atrai links naturais e aumenta o tempo de permanência no site, ambos fatores importantes para SEO.</p>
-
-            <h2>5. Construa backlinks de qualidade</h2>
-            <p>Obtenha links de sites confiáveis e relevantes para o seu nicho. Foque em qualidade, não quantidade. Guest posting, criação de infográficos e participação em fóruns da indústria são boas estratégias.</p>
-
-            <h2>6. Otimize para busca local</h2>
-            <p>Se você tem um negócio local, cadastre-se no Google Meu Negócio, use schema markup para informações locais e inclua sua cidade e região nas palavras-chave.</p>
-
-            <h2>7. Use URLs amigáveis para SEO</h2>
-            <p>Crie URLs curtas, descritivas e que incluam suas palavras-chave principais. Evite URLs longas e complicadas com caracteres especiais.</p>
-
-            <h2>8. Implemente uma estratégia de link interno</h2>
-            <p>Vincule suas páginas internamente de forma estratégica. Isso ajuda os mecanismos de busca a entender a estrutura do seu site e distribui a autoridade de página.</p>
-
-            <h2>9. Otimize para dispositivos móveis</h2>
-            <p>Com o índice mobile-first do Google, ter um site responsivo e otimizado para dispositivos móveis é crucial para o SEO.</p>
-
-            <h2>10. Monitore e analise seu desempenho regularmente</h2>
-            <p>Use ferramentas como o Google Analytics e o Google Search Console para monitorar seu tráfego, rankings e identificar áreas de melhoria. Ajuste sua estratégia com base nesses dados.</p>
-
-            <p>Implementando essas dicas, você estará no caminho certo para melhorar o SEO do seu site e aumentar o tráfego orgânico. Lembre-se de que SEO é um processo contínuo e os resultados podem levar tempo para aparecer. Seja paciente e consistente em seus esforços.</p>
+            <h2>1. Otimize o conteúdo para palavras-chave relevantes</h2>
+            <p>Identifique as palavras-chave que seu público-alvo está procurando e incorpore-as naturalmente em seu conteúdo, títulos e meta descrições. Use ferramentas como o Google Keyword Planner para encontrar termos relevantes e de alto volume.</p>
+            
+            <h2>2. Crie conteúdo de qualidade e relevante</h2>
+            <p>Produza conteúdo valioso e informativo que atenda às necessidades e interesses do seu público-alvo. Conteúdo de alta qualidade não só atrai mais visitantes, mas também aumenta a probabilidade de outros sites fazerem links para o seu.</p>
+            
+            <h2>3. Otimize a estrutura do seu site</h2>
+            <p>Certifique-se de que seu site tenha uma estrutura clara e fácil de navegar. Use URLs amigáveis, crie um sitemap XML e implemente uma estrutura de links internos eficiente.</p>
+            
+            <h2>4. Melhore a velocidade de carregamento do site</h2>
+            <p>A velocidade do site é um fator importante para o SEO. Otimize imagens, minimize o código CSS e JavaScript, e considere o uso de uma CDN para melhorar o tempo de carregamento.</p>
+            
+            <h2>5. Torne seu site mobile-friendly</h2>
+            <p>Com o aumento do uso de dispositivos móveis, é crucial que seu site seja responsivo e ofereça uma boa experiência em smartphones e tablets.</p>
+            
+            <!-- Continuação do conteúdo... -->
+            
         </article>
 
         <section class="contact-form">
-            <h2>Quer ajuda com SEO para o seu negócio?</h2>
+            <h2>Quer ajuda com seu projeto de SEO?</h2>
             <p>Entre em contato conosco para uma consulta gratuita!</p>
             <form id="contactForm">
                 <input type="text" name="name" placeholder="Seu nome" required>
@@ -124,6 +105,20 @@
     </footer>
 
     <script>
+        // Alternar modo escuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Verificar preferência de modo escuro
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Adicionar evento de clique ao botão de modo escuro
+        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Obrigado pelo seu contato! Retornaremos em breve.');
