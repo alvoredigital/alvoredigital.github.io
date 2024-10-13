@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKMBQ2ZZN1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-BKMBQ2ZZN1');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvore Digital - Blog de Marketing Digital</title>
@@ -37,18 +27,28 @@
         </div>
     </header>
 
+    <section class="hero">
+        <div class="container">
+            <h1>Blog Alvore Digital</h1>
+            <p>Insights e estratégias para impulsionar seu marketing digital</p>
+        </div>
+    </section>
+
     <main class="container">
         <div class="content">
             <section class="blog-posts">
                 <!-- Posts serão carregados aqui via JavaScript -->
             </section>
+            <button id="loadMorePosts" class="load-more-button">Carregar mais posts</button>
         </div>
         <aside class="sidebar">
             <div class="widget search-widget">
                 <h3>Pesquisar</h3>
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                <form id="searchForm" class="search-form">
+                    <input type="search" id="searchInput" placeholder="Buscar..." aria-label="Buscar no blog">
+                    <button type="submit" aria-label="Realizar busca">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
             </div>
             <div class="widget recent-posts">
@@ -69,8 +69,25 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <ul>
+                <li><a href="../termos-de-uso.html">Termos de Uso</a></li>
+                <li><a href="../politica-de-privacidade.html">Política de Privacidade</a></li>
+            </ul>
         </div>
     </footer>
+
+    <div id="searchResults" class="search-results">
+        <div class="search-results-content">
+            <h2>Resultados da Pesquisa</h2>
+            <button id="closeSearchResults" class="close-button" aria-label="Fechar resultados da pesquisa">&times;</button>
+            <div id="searchResultsList"></div>
+        </div>
+    </div>
+
+    <div id="cookieConsent" class="cookie-consent">
+        <p>Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="../politica-de-privacidade.html">Política de Privacidade</a>.</p>
+        <button id="acceptCookies">Aceitar</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

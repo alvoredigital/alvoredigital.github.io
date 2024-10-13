@@ -25,6 +25,42 @@ document.addEventListener('DOMContentLoaded', function() {
         applyDarkMode(newDarkMode);
     });
 
+    // Cookie consent
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookiesButton = document.getElementById('acceptCookies');
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        const cookieName = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(cookieName) === 0) {
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+        return "";
+    }
+
+    if (getCookie('cookieConsent') !== 'true') {
+        cookieConsent.style.display = 'block';
+    }
+
+    acceptCookiesButton.addEventListener('click', function() {
+        setCookie('cookieConsent', 'true', 365);
+        cookieConsent.style.display = 'none';
+    });
+
     // Array de posts
     const posts = [
         {
@@ -39,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 2,
             title: "Como Criar uma Estratégia de Redes Sociais Eficiente",
-            excerpt: "Descubra as melhores práticas para desenvolver uma estratégia de redes sociais que gera resultados.",
+            excerpt: "Descubra as melhores práticas para desenvolver uma estratégia de  redes sociais que gera resultados.",
             category: "Redes Sociais",
             date: "2024-03-05",
             author: "Carlos Santos",
@@ -101,17 +137,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
+    let currentPostsCount = 0;
+    const postsPerPage = 5;
+
     // Função para carregar posts
     function loadPosts() {
         const postsContainer = document.querySelector('.blog-posts');
         if (postsContainer) {
-            postsContainer.innerHTML = '';
-            posts.forEach(post => {
+            const postsToLoad = posts.slice(currentPostsCount, currentPostsCount + postsPerPage);
+            postsToLoad.forEach(post => {
                 const postElement = document.createElement('article');
                 postElement.className = 'blog-post';
                 postElement.innerHTML = `
                     <img src="${post.image}" alt="${post.title}">
-                    
                     <h3>${post.title}</h3>
                     <p>${post.excerpt}</p>
                     <div class="post-meta">
@@ -123,7 +161,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 postsContainer.appendChild(postElement);
             });
+            currentPostsCount += postsToLoad.length;
+
+            // Ocultar o botão "Carregar mais" se todos os posts foram carregados
+            const loadMoreButton = document.getElementById('loadMorePosts');
+            if (currentPostsCount >= posts.length) {
+                loadMoreButton.style.display = 'none';
+            } else {
+                loadMoreButton.style.display = 'block';
+            }
         }
+    }
+
+    // Carregar posts iniciais
+    loadPosts();
+
+    // Adicionar evento de clique ao botão "Carregar mais posts"
+    const loadMoreButton = document.getElementById('loadMorePosts');
+    if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', loadPosts);
     }
 
     // Função para carregar posts recentes
@@ -167,19 +223,62 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Carregar posts, posts recentes e categorias
-    loadPosts();
+    // Carregar posts recentes e categorias
     loadRecentPosts();
     loadCategories();
 
+    // Função para realizar a pesquisa
+    function performSearch(searchTerm) {
+        const searchResults = posts.filter(post => 
+            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        const searchResultsList = document.getElementById('searchResultsList');
+        searchResultsList.innerHTML = '';
+
+        if (searchResults.length === 0) {
+            searchResultsList.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+        } else {
+            searchResults.forEach(post => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                resultItem.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt}</p>
+                    <div class="post-meta">
+                        <span class="category">${post.category}</span>
+                        <span class="date">${post.date}</span>
+                        <span class="author">${post.author}</span>
+                    </div>
+                    <a href="posts/${post.id}.html" class="read-more">Ler mais</a>
+                `;
+                searchResultsList.appendChild(resultItem);
+            });
+        }
+
+        document.getElementById('searchResults').style.display = 'block';
+    }
+
     // Adicionar funcionalidade de pesquisa
-    const searchForm = document.querySelector('.search-form');
-    if (searchForm) {
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    if (searchForm && searchInput) {
         searchForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const searchTerm = this.querySelector('input[type="search"]').value;
-            alert(`Você pesquisou por: ${searchTerm}`);
-            // Aqui você implementaria a lógica real de pesquisa
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                performSearch(searchTerm);
+            }
+        });
+    }
+
+    // Fechar resultados da pesquisa
+    const closeSearchResults = document.getElementById('closeSearchResults');
+    if (closeSearchResults) {
+        closeSearchResults.addEventListener('click', function() {
+            document.getElementById('searchResults').style.display = 'none';
         });
     }
 });

@@ -1,0 +1,46 @@
+.terms-of-use {
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 40px 0;
+}
+
+.terms-of-use h1 {
+   color: var(--primary-color);
+   font-size: 2.5rem;
+   margin-bottom: 20px;
+}
+
+.terms-of-use p {
+   margin-bottom: 20px;
+   line-height: 1.6;
+}
+
+.terms-of-use h2 {
+   color: var(--primary-color);
+   font-size: 1.5rem;
+   margin-top: 30px;
+   margin-bottom: 15px;
+}
+
+.terms-of-use ul {
+   margin-left: 20px;
+   margin-bottom: 20px;
+}
+
+.terms-of-use li {
+   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+   .terms-of-use {
+       padding: 20px;
+   }
+
+   .terms-of-use h1 {
+       font-size: 2rem;
+   }
+
+   .terms-of-use h2 {
+       font-size: 1.3rem;
+   }
+}
