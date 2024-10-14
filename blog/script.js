@@ -1,7 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Seletor para o botão de alternância do modo escuro
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
+
+    // Menu toggle functionality
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+
+        // Create or remove overlay
+        if (body.classList.contains('menu-open')) {
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('click', closeMenu);
+        } else {
+            const overlay = document.querySelector('.overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+    });
+
+    function closeMenu() {
+        menuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        body.classList.remove('menu-open');
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+
+    // Close menu when clicking on a link
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
 
     // Função para aplicar o modo escuro
     function applyDarkMode(isDarkMode) {
