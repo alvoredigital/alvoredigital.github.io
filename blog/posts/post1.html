@@ -5,40 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 Dicas de SEO para Aumentar o Tráfego Orgânico - Alvore Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        .post-content {
-            background-color: var(--accent-color);
-            padding: 2rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        .post-content h1 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        .post-meta {
-            color: var(--text-color);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-        .post-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
-        .post-content h2 {
-            color: var(--primary-color);
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .post-content p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/post_style.css">
 </head>
 <body>
     <header>
@@ -46,11 +14,16 @@
             <a href="../index.html" class="logo">
                 <img src="/placeholder.svg?height=40&width=120" alt="Alvore Digital Logo">
             </a>
-            <nav>
+            <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="../index.html#sobre">Sobre</a></li>
-                    <li><a href="../index.html#contato">Contato</a></li>
+                    <li><a href="../sobre.html">Sobre</a></li>
+                    <li><a href="../contato.html">Contato</a></li>
                 </ul>
             </nav>
             <button id="darkModeToggle" class="dark-mode-toggle">
@@ -60,10 +33,14 @@
         </div>
     </header>
 
-    <main class="container">
+    <main class="container post-container">
         <article class="post-content">
             <h1>10 Dicas de SEO para Aumentar o Tráfego Orgânico</h1>
-            <div class="post-meta">2024-03-01 | Ana Silva | SEO</div>
+            <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 2024-03-01</span>
+                <span><i class="far fa-user"></i> Ana Silva</span>
+                <span><i class="far fa-folder"></i> SEO</span>
+            </div>
             <img src="/placeholder.svg?height=400&width=800" alt="SEO Illustration" class="post-image">
             <p>Aprenda estratégias eficazes para melhorar o SEO do seu site e aumentar o tráfego orgânico. Neste artigo, compartilharemos 10 dicas essenciais que podem ajudar a impulsionar sua presença online e atrair mais visitantes qualificados para o seu site.</p>
             
@@ -86,16 +63,27 @@
             
         </article>
 
-        <section class="contact-form">
-            <h2>Quer ajuda com seu projeto de SEO?</h2>
-            <p>Entre em contato conosco para uma consulta gratuita!</p>
-            <form id="contactForm">
-                <input type="text" name="name" placeholder="Seu nome" required>
-                <input type="email" name="email" placeholder="Seu e-mail" required>
-                <textarea name="message" placeholder="Sua mensagem" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+        <aside class="contact-form-container">
+            <div class="contact-form" id="contactForm">
+                <h2>Quer ajuda com seu projeto de SEO?</h2>
+                <p>Entre em contato conosco para uma consulta gratuita!</p>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </aside>
     </main>
 
     <footer>
@@ -104,26 +92,7 @@
         </div>
     </footer>
 
-    <script>
-        // Alternar modo escuro
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-        }
-
-        // Verificar preferência de modo escuro
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Adicionar evento de clique ao botão de modo escuro
-        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Obrigado pelo seu contato! Retornaremos em breve.');
-            this.reset();
-        });
-    </script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/post-script.js"></script>
 </body>
 </html>

@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="date">${post.date}</span>
                         <span class="author">${post.author}</span>
                     </div>
-                    <a href="posts/${post.id}.html" class="read-more">Ler mais</a>
+                    <a href="posts/post${post.id}.html" class="read-more">Ler mais</a>
                 `;
                 postsContainer.appendChild(postElement);
             });
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
             posts.slice(0, 5).forEach(post => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = `posts/${post.id}.html`;
+                a.href = `posts/post${post.id}.html`;
                 a.textContent = post.title;
                 li.appendChild(a);
                 recentPostsList.appendChild(li);
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="date">${post.date}</span>
                         <span class="author">${post.author}</span>
                     </div>
-                    <a href="posts/${post.id}.html" class="read-more">Ler mais</a>
+                    <a href="posts/post${post.id}.html" class="read-more">Ler mais</a>
                 `;
                 searchResultsList.appendChild(resultItem);
             });
