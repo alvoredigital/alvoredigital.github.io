@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', closeMenu);
     });
 
-    // Função para aplicar o modo escuro
+    // Dark mode toggle functionality
     function applyDarkMode(isDarkMode) {
         if (isDarkMode) {
             body.classList.add('dark');
@@ -52,11 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Verificar a preferência salva no localStorage
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     applyDarkMode(isDarkMode);
 
-    // Adicionar evento de clique ao botão de alternância
     darkModeToggle.addEventListener('click', function() {
         const newDarkMode = !body.classList.contains('dark');
         localStorage.setItem('darkMode', newDarkMode);
@@ -108,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "SEO",
             date: "2024-03-01",
             author: "Ana Silva",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post1.jpg"
         },
         {
             id: 2,
@@ -117,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "Redes Sociais",
             date: "2024-03-05",
             author: "Carlos Santos",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post2.jpg"
         },
         {
             id: 3,
@@ -126,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "E-mail Marketing",
             date: "2024-03-10",
             author: "Mariana Oliveira",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post3.jpg"
         },
         {
             id: 4,
@@ -135,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "Análise de Dados",
             date: "2024-03-15",
             author: "Pedro Almeida",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post4.jpg"
         },
         {
             id: 5,
@@ -144,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "Content Marketing",
             date: "2024-03-20",
             author: "Juliana Costa",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post5.jpg"
         },
         {
             id: 6,
@@ -153,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "SEO",
             date: "2024-03-25",
             author: "Rafael Mendes",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post6.jpg"
         },
         {
             id: 7,
@@ -162,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "Redes Sociais",
             date: "2024-03-30",
             author: "Fernanda Lima",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post7.jpg"
         },
         {
             id: 8,
@@ -171,12 +169,32 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "Marketing Digital",
             date: "2024-04-01",
             author: "Lucas Ferreira",
-            image: "/placeholder.svg?height=300&width=800"
+            image: "assets/img/posts_img/post8.jpg"
         }
     ];
 
     let currentPostsCount = 0;
     const postsPerPage = 5;
+
+    // Função para criar o card do post
+    function createPostCard(post) {
+        return `
+            <article class="blog-post">
+                <img src="${post.image}" alt="${post.title}">
+                <h3>${post.title}</h3>
+                <p>${post.excerpt}</p>
+                <div class="post-meta">
+                    <a href="category.html?category=${encodeURIComponent(post.category)}" class="category">
+                        <i class="fas fa-folder category-icon"></i>
+                        ${post.category}
+                    </a>
+                    <span class="date">${post.date}</span>
+                    <span class="author">${post.author}</span>
+                </div>
+                <a href="posts/post${post.id}.html" class="read-more">Ler mais</a>
+            </article>
+        `;
+    }
 
     // Função para carregar posts
     function loadPosts() {
@@ -184,20 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (postsContainer) {
             const postsToLoad = posts.slice(currentPostsCount, currentPostsCount + postsPerPage);
             postsToLoad.forEach(post => {
-                const postElement = document.createElement('article');
-                postElement.className = 'blog-post';
-                postElement.innerHTML = `
-                    <img src="${post.image}" alt="${post.title}">
-                    <h3>${post.title}</h3>
-                    <p>${post.excerpt}</p>
-                    <div class="post-meta">
-                        <span class="category">${post.category}</span>
-                        <span class="date">${post.date}</span>
-                        <span class="author">${post.author}</span>
-                    </div>
-                    <a href="posts/post${post.id}.html" class="read-more">Ler mais</a>
-                `;
-                postsContainer.appendChild(postElement);
+                postsContainer.innerHTML += createPostCard(post);
             });
             currentPostsCount += postsToLoad.length;
 
@@ -238,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Função para carregar categorias
     function loadCategories() {
-        const categoriesList = document.querySelector('.categories ul');
+        const categoriesList = document.getElementById('categoriesList');
         if (categoriesList) {
             const categories = {};
             posts.forEach(post => {
@@ -253,8 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
             Object.entries(categories).forEach(([category, count]) => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = `#${category.toLowerCase().replace(' ', '-')}`;
-                a.innerHTML = `${category} <span>${count}</span>`;
+                a.href = `category.html?category=${encodeURIComponent(category)}`;
+                a.innerHTML = `
+                    <i class="fas fa-folder category-icon"></i>
+                    ${category}
+                    <span>${count}</span>
+                `;
                 li.appendChild(a);
                 categoriesList.appendChild(li);
             });
@@ -281,16 +290,15 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             searchResults.forEach(post => {
                 const resultItem = document.createElement('div');
-                resultItem.className = 'search-result-item';
+                resultItem.classList.add('search-result-item');
                 resultItem.innerHTML = `
-                    <h3>${post.title}</h3>
+                    <h3><a href="posts/post${post.id}.html">${post.title}</a></h3>
                     <p>${post.excerpt}</p>
                     <div class="post-meta">
                         <span class="category">${post.category}</span>
                         <span class="date">${post.date}</span>
                         <span class="author">${post.author}</span>
                     </div>
-                    <a href="posts/post${post.id}.html" class="read-more">Ler mais</a>
                 `;
                 searchResultsList.appendChild(resultItem);
             });
@@ -299,16 +307,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('searchResults').style.display = 'block';
     }
 
-    // Adicionar funcionalidade de pesquisa
+    // Adicionar evento de submit ao formulário de pesquisa
     const searchForm = document.getElementById('searchForm');
-    const searchInput = document.getElementById('searchInput');
-    if (searchForm && searchInput) {
+    if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                performSearch(searchTerm);
-            }
+            const searchTerm = document.getElementById('searchInput').value;
+            performSearch(searchTerm);
         });
     }
 
@@ -319,4 +324,28 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('searchResults').style.display = 'none';
         });
     }
+
+    // Função para carregar posts de uma categoria específica
+    function loadCategoryPosts() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        
+        if (category) {
+            const categoryTitle = document.getElementById('categoryTitle');
+            const categoryPosts = document.getElementById('categoryPosts');
+            
+            if (categoryTitle && categoryPosts) {
+                categoryTitle.textContent = `Categoria: ${category}`;
+                const filteredPosts = posts.filter(post => post.category === category);
+                
+                categoryPosts.innerHTML = '';
+                filteredPosts.forEach(post => {
+                    categoryPosts.innerHTML += createPostCard(post);
+                });
+            }
+        }
+    }
+
+    // Carregar posts da categoria se estiver na página de categoria
+    loadCategoryPosts();
 });
