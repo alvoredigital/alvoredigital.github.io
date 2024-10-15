@@ -184,10 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>${post.title}</h3>
                 <p>${post.excerpt}</p>
                 <div class="post-meta">
-                    <a href="category.html?category=${encodeURIComponent(post.category)}" class="category">
-                        <i class="fas fa-folder category-icon"></i>
-                        ${post.category}
-                    </a>
+                    <a href="category.html?category=${encodeURIComponent(post.category)}" class="category"><i class="fas fa-folder category-icon"></i>${post.category}</a> 
                     <span class="date">${post.date}</span>
                     <span class="author">${post.author}</span>
                 </div>

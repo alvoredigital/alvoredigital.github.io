@@ -1,7 +1,9 @@
 :root {
     --primary-color: #0066cc;
     --secondary-color: #ff6600;
+    --secondary-color-hover: #97430b;
     --text-color: #333333;
+    --text-color-search-link: #1667cb;
     --background-color: #ffffff;
     --accent-color: #f5f5f5;
     --hover-color: #004499;
@@ -11,6 +13,7 @@
 .dark {
     --primary-color: #4d94ff;
     --secondary-color: #ff944d;
+    --secondary-color-hover: #ba500a;
     --text-color: #f5f5f5;
     --background-color: #1a1a1a;
     --accent-color: #2a2a2a;
@@ -208,6 +211,14 @@ main {
     color: var(--secondary-color);
 }
 
+.blog-post .post-meta a {
+    margin-right: 15px;
+    color: var(--secondary-color);
+}
+.blog-post .post-meta a:hover {
+    color: var(--secondary-color-hover);
+}
+
 .blog-post .post-meta span {
     margin-right: 15px;
 }
@@ -301,6 +312,11 @@ main {
     border-bottom: 1px solid var(--border-color);
 }
 
+.categories li {
+    position: relative;
+    width: 100%;
+}
+
 .recent-posts li:last-child,
 .categories li:last-child {
     border-bottom: none;
@@ -321,8 +337,9 @@ main {
 
 .categories a {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: left;
+    width: 100%;
+    position: relative;
 }
 
 .categories a span {
@@ -331,6 +348,8 @@ main {
     padding: 2px 6px;
     border-radius: 10px;
     font-size: 0.8rem;
+    margin: 0 40px 0 94%;
+    position: absolute;
 }
 
 .category-icon {
@@ -397,6 +416,10 @@ footer ul li a:hover {
 .search-results h2 {
     color: var(--primary-color);
     margin-bottom: 20px;
+}
+
+.search-results a {
+    color: var(--text-color-search-link);
 }
 
 .close-button {
@@ -476,10 +499,15 @@ footer ul li a:hover {
     color: var(--primary-color);
     font-size: 2rem;
     margin-bottom: 1rem;
+    margin-top: 5rem;
 }
 
 .category-description {
     margin-bottom: 2rem;
+}
+
+.category-aside-page {
+    margin-top: 5rem;
 }
 
 /* Responsive Design */

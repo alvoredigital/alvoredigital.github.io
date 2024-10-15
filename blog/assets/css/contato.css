@@ -30,7 +30,7 @@ body {
 .container {
    max-width: 1200px;
    margin: 0 auto;
-   padding: 0 20px;
+   padding: 20px 0;
 }
 
 /* Header styles (assuming they're shared across pages) */
@@ -125,6 +125,7 @@ main {
 }
 
 .contact-content {
+   width: 100%;
    display: flex;
    justify-content: space-between;
    gap: 40px;
@@ -199,6 +200,10 @@ main {
 .contact-info i {
    margin-right: 10px;
    color: var(--primary-color);
+}
+
+.contact-info i:hover {
+   color: var(--hover-color);
 }
 
 .social-icons {
