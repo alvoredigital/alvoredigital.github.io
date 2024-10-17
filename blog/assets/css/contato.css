@@ -238,6 +238,18 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+   .logo img {
+      margin-left: 10px;
+      height: 30px;
+      position: absolute;
+      top: 32px;
+  }
+
+   .contact-hero {
+      padding: 100px 0 20px;
+   }
+
    .contact-hero h1 {
        font-size: 2rem;
    }

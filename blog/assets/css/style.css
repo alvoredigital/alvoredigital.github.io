@@ -116,6 +116,7 @@ nav ul li a.active {
     cursor: pointer;
     padding: 10px;
     z-index: 1001;
+    position: relative;
 }
 
 .menu-toggle span {
@@ -125,6 +126,16 @@ nav ul li a.active {
     background-color: var(--text-color);
     margin: 5px 0;
     transition: all 0.3s ease;
+}
+
+.menu-toggle img {
+    height: 50px;
+    display: none;
+}
+
+.hidden {
+    display: none;
+    position: absolute;
 }
 
 /* Hero Sections */
@@ -512,7 +523,22 @@ footer ul li a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+    .logo img {
+        margin-left: 10px;
+        height: 30px;
+        position: absolute;
+        top: 32px;
+    }
+
     .menu-toggle {
+        display: block;
+        position: relative;
+
+    }
+
+    .menu-toggle img {
+        height: 50px;
         display: block;
     }
 
@@ -548,14 +574,41 @@ footer ul li a:hover {
         font-size: 1.1rem;
     }
 
+    .menu-toggle #logoToggle {
+        position: absolute;
+        top: 343px;
+        right: 141px;
+
+        opacity: 0;
+        transition: right 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-toggle.active #logoToggle {
+        right: 181px;
+        opacity: 1;
+    }
+
+    #logoToggle img {
+        height: 150px;
+    }
+
     .dark-mode-toggle {
         position: absolute;
-        top: 20px;
-        right: 60px;
+        top: 35px;
+        right: 67px;
     }
 
     main {
         flex-direction: column;
+    }
+
+    .category-title {
+        margin-top: 0px;
+        padding: 0 10px;
+    }
+
+    .category-description {
+        padding: 0 10px;
     }
 
     .sidebar {
@@ -565,6 +618,10 @@ footer ul li a:hover {
     .search-results-content {
         margin: 20px;
         padding: 15px;
+    }
+
+    .hero, .contact-hero, .about-hero {
+        padding: 100px 0 20px;
     }
 
     .hero h1, .contact-hero h1, .about-hero h1 {
@@ -585,6 +642,10 @@ footer ul li a:hover {
 
     footer ul li {
         margin: 0 10px;
+    }
+
+    .blog-post .post-meta {
+        padding: 0 16px 10px;
     }
 
     .blog-post img {
@@ -609,6 +670,9 @@ footer ul li a:hover {
 
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
+}
+.menu-toggle.active .hidden {
+    display: block;
 }
 
 /* Overlay */

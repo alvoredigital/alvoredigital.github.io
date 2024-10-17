@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
+    const logoToggle = document.getElementById('logoToggle');
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
@@ -10,12 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
         mainNav.classList.toggle('active');
         body.classList.toggle('menu-open');
 
+        // Toggle logo visibility
+        if (logoToggle) {
+            logoToggle.classList.toggle('hidden');
+        }
+
         // Create or remove overlay
         if (body.classList.contains('menu-open')) {
             const overlay = document.createElement('div');
             overlay.classList.add('overlay');
             document.body.appendChild(overlay);
-
             overlay.addEventListener('click', closeMenu);
         } else {
             const overlay = document.querySelector('.overlay');
@@ -29,10 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.classList.remove('active');
         mainNav.classList.remove('active');
         body.classList.remove('menu-open');
+
+        // Show logo when closing menu
+        if (logoToggle) {
+            logoToggle.classList.remove('hidden');
+        }
+
         const overlay = document.querySelector('.overlay');
         if (overlay) {
             overlay.remove();
         }
+
     }
 
     // Close menu when clicking on a link
