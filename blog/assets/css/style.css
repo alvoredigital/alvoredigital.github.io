@@ -523,7 +523,6 @@ footer ul li a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-
     .logo img {
         margin-left: 10px;
         height: 30px;
@@ -534,7 +533,6 @@ footer ul li a:hover {
     .menu-toggle {
         display: block;
         position: relative;
-
     }
 
     .menu-toggle img {
@@ -574,22 +572,29 @@ footer ul li a:hover {
         font-size: 1.1rem;
     }
 
-    .menu-toggle #logoToggle {
+    .menu-toggle #logoToggle img {
         position: absolute;
         top: 343px;
         right: 141px;
-
-        opacity: 0;
-        transition: right 0.3s ease, opacity 0.3s ease;
-    }
-
-    .menu-toggle.active #logoToggle {
-        right: 181px;
-        opacity: 1;
-    }
-
-    #logoToggle img {
         height: 150px;
+        opacity: 0;
+        transition: right 0.3s ease 0.3s, opacity 0.3s ease 0.3s;
+
+
+        display: inline-block; /* Garantir que o link seja visível inicialmente */
+        opacity: 0;            /* Inicialmente invisível */
+        transform: translateX(-100px); /* Posiciona à esquerda fora da tela */
+        transition: opacity 2s ease, transform 2s ease; /* Transição suave */
+    }
+
+    .menu-toggle.active #logoToggle img {
+        right: 181px;
+        opacity:  1;
+        transition: right 0.3s ease, opacity 0.3s ease;
+
+
+        opacity: 1; /* Logo se torna visível */
+        transform: translateX(0); /* Move o logo para a posição original */
     }
 
     .dark-mode-toggle {
@@ -683,7 +688,7 @@ footer ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
 
