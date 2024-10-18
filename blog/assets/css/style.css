@@ -58,6 +58,10 @@ header .container {
     padding: 20px 0;
 }
 
+.logo {
+    display: flex;
+}
+
 .logo img {
     height: 40px;
 }
@@ -81,6 +85,11 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li a.active {
     color: var(--primary-color);
+}
+
+.line-toggle-menu,
+.social-icons-menu-mobile {
+    display: none;
 }
 
 .dark-mode-toggle {
@@ -572,29 +581,45 @@ footer ul li a:hover {
         font-size: 1.1rem;
     }
 
-    .menu-toggle #logoToggle img {
-        position: absolute;
-        top: 343px;
-        right: 141px;
-        height: 150px;
-        opacity: 0;
-        transition: right 0.3s ease 0.3s, opacity 0.3s ease 0.3s;
-
-
-        display: inline-block; /* Garantir que o link seja visível inicialmente */
-        opacity: 0;            /* Inicialmente invisível */
-        transform: translateX(-100px); /* Posiciona à esquerda fora da tela */
-        transition: opacity 2s ease, transform 2s ease; /* Transição suave */
+    .line-toggle-menu {
+        display: inline-block;
+        height: 4px;
+        background-color: var(--border-color);
+    }
+    .line-01 {
+        width: 30%;
+    }
+    .line-02 {
+        width: 40%;
+    }
+    .line-03 {
+        width: 50%;
     }
 
-    .menu-toggle.active #logoToggle img {
-        right: 181px;
-        opacity:  1;
-        transition: right 0.3s ease, opacity 0.3s ease;
+    .social-icons-menu-mobile {
+        display: inline-block;
+        position: absolute;
+        bottom: 69px;
+        left: 72px;
+    }
+    .link-facebook-menu,
+    .link-instagram-menu,
+    .link-linkedin-menu {
+        color: var(--primary-color);
+        height: 40px;
+        margin: 0 10px;
+    }
+    .social-icons-menu-mobile .fa-facebook,
+    .social-icons-menu-mobile .fa-instagram,
+    .social-icons-menu-mobile .fa-linkedin {
+        font-size: 30px;
+    }
 
-
-        opacity: 1; /* Logo se torna visível */
-        transform: translateX(0); /* Move o logo para a posição original */
+    #logoToggle img {
+        position: absolute;
+        top: 343px;
+        left: 87px;
+        height: 150px;
     }
 
     .dark-mode-toggle {
