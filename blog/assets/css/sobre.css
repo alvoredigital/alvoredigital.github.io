@@ -180,6 +180,92 @@ main {
       top: 32px;
   }
 
+  .menu-toggle {
+      display: block;
+      position: relative;
+  }
+
+  .menu-toggle img {
+      height: 50px;
+      display: block;
+  }
+
+  nav {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: var(--background-color);
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 1000;
+  }
+
+  nav.active {
+      left: 0;
+  }
+
+  nav ul {
+      flex-direction: column;
+      padding-top: 80px;
+  }
+
+  nav ul li {
+      margin: 0;
+  }
+
+  nav ul li a {
+      display: block;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+  }
+
+  .line-toggle-menu {
+      display: inline-block;
+      height: 4px;
+      background-color: var(--border-color);
+  }
+  .line-01 {
+      width: 30%;
+  }
+  .line-02 {
+      width: 40%;
+  }
+  .line-03 {
+      width: 50%;
+  }
+  #logoToggle {
+      display: block;
+  }
+
+  .social-icons-menu-mobile {
+      display: inline-block;
+      position: absolute;
+      bottom: 69px;
+      left: 72px;
+  }
+  .link-facebook-menu,
+  .link-instagram-menu,
+  .link-linkedin-menu {
+      color: var(--primary-color);
+      height: 40px;
+      margin: 0 10px;
+  }
+  .social-icons-menu-mobile .fa-facebook,
+  .social-icons-menu-mobile .fa-instagram,
+  .social-icons-menu-mobile .fa-linkedin {
+      font-size: 30px;
+  }
+
+  #logoToggle img {
+      position: absolute;
+      top: 343px;
+      left: 87px;
+      height: 150px;
+  }
+  
    .about-hero {
       padding: 100px 0 20px;
    }
