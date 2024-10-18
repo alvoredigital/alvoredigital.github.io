@@ -42,7 +42,7 @@
    margin-right: 0.5rem;
 }
 
-.post-image {
+.post-main-image {
    max-width: 100%;
    width: 100%;
    height: auto;
@@ -50,6 +50,26 @@
    border-radius: 5px;
 }
 
+
+
+
+/* add style chat-GPT */
+/* Estilização da imagem dos posts com hover */
+.post-image {
+   max-width: 100%;
+   width: 600px;
+   height: auto;
+   margin-bottom: 1rem;
+   border-radius: 5px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-image:hover {
+   transform: scale(1.05);
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Post content styling */
 .post-content h2 {
    color: var(--primary-color);
    margin-top: 1.5rem;
@@ -58,8 +78,57 @@
 }
 
 .post-content p {
-   margin-bottom: 1rem;
+   margin-bottom: 1.5rem;
    line-height: 1.6;
+   font-size: 1.1rem;
+}
+
+.post-content a {
+   color: var(--primary-color);
+   text-decoration: none;
+   transition: color 0.3s ease;
+}
+
+.post-content a:hover {
+   color: var(--hover-color);
+}
+
+/* Caixa de destaque para CTAs */
+.cta-box {
+   margin-top: 2rem;
+   padding: 20px;
+   background-color: var(--primary-color);
+   border-radius: 10px;
+   text-align: center;
+   color: var(--text-color);
+}
+
+.cta-box h2 {
+   font-size: 2rem;
+   margin-bottom: 1rem;
+   color: var(--accent-color);
+}
+
+.cta-box p {
+   font-size: 1.2rem;
+   margin-bottom: 1.5rem;
+   color: white;
+}
+
+.cta-box a {
+   display: inline-block;
+   background-color: #333;
+   padding: 12px 20px;
+   color: #fff;
+   border-radius: 5px;
+   text-decoration: none;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+}
+
+.cta-box a:hover {
+   background-color: #1e1d1d;
+   color: #b7b7b7;
 }
 
 .contact-form-container {
@@ -133,6 +202,152 @@
    background-color: var(--hover-color);
 }
 
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+   /* Flexbox ajustando para colunas em mobile */
+   .post-container {
+       flex-direction: column;
+       gap: 20px;
+   }
+
+   /* Post content se ajusta com mais espaçamento */
+   .post-content {
+       padding: 15px;
+   }
+
+   /* Ajustando o tamanho das imagens dos posts */
+   .post-image {
+       width: 100%;
+       height: auto;
+       margin-bottom: 1rem;
+   }
+
+   /* Tamanhos de texto adaptados */
+   .post-content h1 {
+       font-size: 2rem;
+   }
+
+   .post-content h2 {
+       font-size: 1.5rem;
+   }
+
+   .post-content p {
+       font-size: 1rem;
+       line-height: 1.5;
+   }
+
+   /* Caixa de CTA se adapta ao mobile */
+   .cta-box {
+       padding: 15px;
+       text-align: center;
+   }
+
+   .cta-box h2 {
+       font-size: 1.6rem;
+   }
+
+   .cta-box p {
+       font-size: 1rem;
+   }
+
+   .cta-box a {
+       padding: 10px 15px;
+       font-size: 1rem;
+   }
+
+   /* Ajustes no formulário de contato */
+   .contact-form-container {
+       flex: 1;
+   }
+
+   .contact-form {
+       margin-top: 2rem;
+       padding: 15px;
+   }
+
+   .contact-form h2 {
+       font-size: 1.4rem;
+   }
+
+   .contact-form p {
+       font-size: 1rem;
+   }
+
+   .form-group input,
+   .form-group textarea {
+       padding: 10px;
+       font-size: 1rem;
+   }
+
+   .contact-form button {
+       padding: 10px 20px;
+       font-size: 1rem;
+   }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+   /* Post container flex em tablets */
+   .post-container {
+       flex-direction: row;
+       gap: 30px;
+   }
+
+   /* Ajuste de largura das imagens */
+   .post-image {
+       width: 100%;
+       height: auto;
+   }
+
+   /* Ajustes de fontes */
+   .post-content h1 {
+       font-size: 2.2rem;
+   }
+
+   .post-content h2 {
+       font-size: 1.7rem;
+   }
+
+   .post-content p {
+       font-size: 1.1rem;
+   }
+
+   .cta-box h2 {
+       font-size: 1.8rem;
+   }
+
+   .cta-box p {
+       font-size: 1.1rem;
+   }
+
+   .cta-box a {
+       padding: 12px 18px;
+       font-size: 1.1rem;
+   }
+
+   /* Ajuste no formulário de contato */
+   .contact-form {
+       padding: 20px;
+   }
+
+   .contact-form h2 {
+       font-size: 1.5rem;
+   }
+
+   .contact-form p {
+       font-size: 1.1rem;
+   }
+
+   .form-group input,
+   .form-group textarea {
+       padding: 12px;
+   }
+
+   .contact-form button {
+       padding: 12px 24px;
+   }
+}
+
 @media (max-width: 768px) {
    .post-container {
        flex-direction: column;
@@ -147,3 +362,4 @@
        margin-top: 2rem;
    }
 }
+
