@@ -50,11 +50,6 @@
    border-radius: 5px;
 }
 
-
-
-
-/* add style chat-GPT */
-/* Estilização da imagem dos posts com hover */
 .post-image {
    max-width: 100%;
    width: 600px;
@@ -92,6 +87,55 @@
 .post-content a:hover {
    color: var(--hover-color);
 }
+
+/* Estilo aprimorado para listas */
+.post-content ul {
+   margin-left: 20px;
+   margin-bottom: 1.5rem;
+   padding-left: 0;
+   list-style: none; 
+}
+
+.post-content ul li {
+   position: relative;
+   padding-left: 30px; 
+   margin-bottom: 1rem;
+   line-height: 1.7;
+   font-size: 1.1rem;
+   color: var(--text-color);
+}
+
+.post-content ul li::before {
+   content: '\f00c'; 
+   font-family: 'Font Awesome 5 Free'; 
+   font-weight: 900; 
+   position: absolute;
+   left: 0;
+   top: 0;
+   color: var(--primary-color); 
+   font-size: 1.2rem;
+   line-height: 1.5;
+}
+
+.post-content ul li + li {
+   margin-top: 1rem; 
+}
+
+@media (max-width: 768px) {
+   .post-content ul li {
+       padding-left: 25px; 
+       font-size: 1rem;
+   }
+
+   .post-content ul li::before {
+       font-size: 1rem;
+   }
+
+   .post-content ul li + li {
+       margin-top: 0.8rem; 
+   }
+}
+
 
 /* Caixa de destaque para CTAs */
 .cta-box {
