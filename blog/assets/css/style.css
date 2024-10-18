@@ -88,7 +88,8 @@ nav ul li a.active {
 }
 
 .line-toggle-menu,
-.social-icons-menu-mobile {
+.social-icons-menu-mobile,
+#logoToggle {
     display: none;
 }
 
@@ -594,6 +595,9 @@ footer ul li a:hover {
     }
     .line-03 {
         width: 50%;
+    }
+    #logoToggle {
+        display: block;
     }
 
     .social-icons-menu-mobile {
