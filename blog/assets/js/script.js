@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
+    
     // Carregar posts da categoria se estiver na página de categoria
     loadCategoryPosts();
 });

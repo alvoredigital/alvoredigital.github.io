@@ -22,3 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
    adjustFormPosition();
    window.addEventListener('resize', adjustFormPosition);
 });
+
+// script para modal de termos e significado
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('explanatoryModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = modal.querySelector('.close');
+
+    function showModal(term, description) {
+        modalTitle.textContent = term;
+        modalDescription.textContent = description;
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    document.querySelectorAll('.post-content strong[data-term]').forEach(element => {
+        element.addEventListener('click', () => {
+            const term = element.getAttribute('data-term');
+            const description = element.getAttribute('data-description');
+            showModal(term, description);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+});
