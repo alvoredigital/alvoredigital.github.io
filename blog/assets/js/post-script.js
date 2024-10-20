@@ -55,3 +55,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+
+
+// controle do tamanho das fontes
+document.addEventListener('DOMContentLoaded', function() {
+    const decreaseBtn = document.getElementById('decreaseFontSize');
+    const increaseBtn = document.getElementById('increaseFontSize');
+    const content = document.querySelector('.post-content');
+    let fontSize = 16;
+  
+    function updateFontSize() {
+      content.style.fontSize = `${fontSize}px`;
+      localStorage.setItem('blogFontSize', fontSize);
+    }
+  
+    // Carregar tamanho da fonte salvo
+    const savedFontSize = localStorage.getItem('blogFontSize');
+    if (savedFontSize) {
+      fontSize = parseInt(savedFontSize);
+      updateFontSize();
+    }
+  
+    decreaseBtn.addEventListener('click', () => {
+      if (fontSize > 14) {
+        fontSize -= 2;
+        updateFontSize();
+      }
+    });
+  
+    increaseBtn.addEventListener('click', () => {
+      if (fontSize < 24) {
+        fontSize += 2;
+        updateFontSize();
+      }
+    });
+  });

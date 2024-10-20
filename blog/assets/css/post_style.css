@@ -466,3 +466,68 @@
 .post-content strong[data-term]:hover {
    color: var(--hover-color);
 }
+
+
+
+/* estilização para a fonte */
+
+body {
+   font-family: 'Inter', sans-serif;
+   font-size: 16px;
+   line-height: 1.6;
+   color: var(--text-color);
+ }
+ 
+ .post-content {
+   font-size: 1rem;
+   max-width: 70ch;
+   margin: 0 auto;
+ }
+ 
+ @media (min-width: 768px) {
+   .post-content {
+     font-size: 1.125rem;
+   }
+ }
+ 
+ h1 { font-size: 2rem; font-weight: 700; }
+ h2 { font-size: 1.5rem; font-weight: 700; }
+ h3 { font-size: 1.25rem; font-weight: 700; }
+ h4 { font-size: 1.125rem; font-weight: 700; }
+ 
+ .post-content p {
+   margin-bottom: 1.5em;
+ }
+
+
+ 
+.font-size-controls {
+   position: fixed;
+   top: 100px;
+   right: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   z-index: 1000;
+ }
+ 
+ .font-size-controls button {
+   background-color: var(--primary-color);
+   color: white;
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+ }
+ 
+ .font-size-controls button:hover {
+   background-color: var(--primary-color-dark);
+ }
+ 
+ .font-size-controls button:focus {
+   outline: 2px solid var(--primary-color);
+   outline-offset: 2px;
+ }
