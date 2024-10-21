@@ -110,11 +110,16 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <p>&copy; <span id="current-year"></span> <a href="../../index.html" class="link-footer-site" title="Site Alvore Digital">Alvore Digital</a>. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script>
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');

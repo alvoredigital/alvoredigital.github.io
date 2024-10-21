@@ -61,8 +61,8 @@
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="text">Whatsapp</label>
+                    <input type="text" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="subject">Assunto</label>
@@ -79,6 +79,7 @@
                 <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Exemplo, 123 - Cidade, Estado</p>
                 <p><i class="fas fa-phone"></i> Telefone: (11) 1234-5678</p>
                 <p><i class="fas fa-envelope"></i> E-mail: contato@alvoredigital.com</p>
+                <p><i class="fas fa-globe"></i> <a href="https://alvoredigital.github.io" class="link-site">https://alvoredigital.github.io</a></p>
                 <div class="social-icons">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -91,7 +92,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <p>&copy; <span id="current-year"></span> <a href="../../index.html" class="link-footer-site" title="Site Alvore Digital">Alvore Digital</a>. Todos os direitos reservados.</p>
             <ul>
                 <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                 <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -104,6 +105,11 @@
         <button id="acceptCookies">Aceitar</button>
     </div>
 
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

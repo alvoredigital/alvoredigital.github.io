@@ -86,7 +86,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <p>&copy; <span id="current-year"></span> <a href="../../index.html" class="link-footer-site" title="Site Alvore Digital">Alvore Digital</a>. Todos os direitos reservados.</p>
             <ul>
                 <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                 <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -106,7 +106,12 @@
         <p>Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
         <button id="acceptCookies">Aceitar</button>
     </div>
-
+    
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

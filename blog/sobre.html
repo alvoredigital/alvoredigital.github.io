@@ -56,7 +56,7 @@
         <div class="about-content">
             <section class="our-story">
                 <h2>Nossa História</h2>
-                <p>A Alvore Digital nasceu da paixão por marketing digital e da vontade de ajudar empresas a alcançarem seu potencial máximo no mundo online. Desde nossa fundação em 2015, temos trabalhado incansavelmente para oferecer soluções inovadoras e eficazes para nossos clientes.</p>
+                <p>A <a href="../../index.html" class="link-site" title="Site Alvore Digital">Alvore Digital</a> nasceu da paixão por marketing digital e da vontade de ajudar empresas a alcançarem seu potencial máximo no mundo online. Desde nossa fundação em 2015, temos trabalhado incansavelmente para oferecer soluções inovadoras e eficazes para nossos clientes.</p>
                 <p>Ao longo dos anos, expandimos nossa equipe com profissionais talentosos e dedicados, sempre buscando estar na vanguarda das tendências e tecnologias do marketing digital. Nossa jornada tem sido marcada por desafios superados e conquistas celebradas ao lado de nossos clientes.</p>
             </section>
             <section class="our-mission">
@@ -89,7 +89,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <p>&copy; <span id="current-year"></span> <a href="../../index.html" class="link-footer-site" title="Site Alvore Digital">Alvore Digital</a>. Todos os direitos reservados.</p>
             <ul>
                 <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                 <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -102,6 +102,11 @@
         <button id="acceptCookies">Aceitar</button>
     </div>
 
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

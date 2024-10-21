@@ -421,6 +421,14 @@ footer ul li a:hover {
     color: var(--primary-color);
 }
 
+.link-site {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.link-site:hover {
+    color: var(--hover-color);
+}
+
 /* Search Results */
 .search-results {
     display: none;
