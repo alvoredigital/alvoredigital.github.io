@@ -119,17 +119,9 @@
         </aside>
     </main>
 
-    <div id="explanatoryModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDescription"></p>
-        </div>
-    </div>
-
     <footer>
         <div class="container">
-            <p>&copy; 2024 Alvore Digital. Todos os direitos reservados.</p>
+            <p>&copy; <span id="current-year"></span> <a href="../../index.html" class="link-footer-site" title="Site Alvore Digital">Alvore Digital</a>. Todos os direitos reservados.</p>
             <ul>
                 <li><a href="../termos-de-uso.html">Termos de Uso</a></li>
                 <li><a href="../politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -142,6 +134,24 @@
         <button id="acceptCookies">Aceitar</button>
     </div>
 
+    <div id="explanatoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <div class="font-size-controls">
+        <button id="decreaseFontSize" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="increaseFontSize" aria-label="Aumentar tamanho da fonte">A+</button>
+    </div>
+
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/post-script.js"></script>
 

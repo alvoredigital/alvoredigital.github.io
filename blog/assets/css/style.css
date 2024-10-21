@@ -28,7 +28,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -391,6 +391,14 @@ footer .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+footer .container a {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+footer .container a:hover {
+    opacity: .7;
 }
 
 footer ul {

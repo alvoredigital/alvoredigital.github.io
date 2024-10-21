@@ -69,14 +69,14 @@
    color: var(--primary-color);
    margin-top: 1.5rem;
    margin-bottom: 1rem;
-   font-size: 1.8rem;
+   /* font-size: 1.8rem; */
 }
 
-.post-content p {
+/* .post-content p {
    margin-bottom: 1.5rem;
    line-height: 1.6;
-   font-size: 1.1rem;
-}
+   font-size: 16px;
+} */
 
 .post-content a {
    color: var(--primary-color);
@@ -468,39 +468,19 @@
 }
 
 
-
 /* estilização para a fonte */
-
 body {
    font-family: 'Inter', sans-serif;
-   font-size: 16px;
-   line-height: 1.6;
-   color: var(--text-color);
  }
- 
+
  .post-content {
-   font-size: 1rem;
-   max-width: 70ch;
-   margin: 0 auto;
- }
- 
- @media (min-width: 768px) {
-   .post-content {
-     font-size: 1.125rem;
-   }
- }
- 
- h1 { font-size: 2rem; font-weight: 700; }
- h2 { font-size: 1.5rem; font-weight: 700; }
- h3 { font-size: 1.25rem; font-weight: 700; }
- h4 { font-size: 1.125rem; font-weight: 700; }
+   font-size: 18px;
+}
  
  .post-content p {
    margin-bottom: 1.5em;
  }
 
-
- 
 .font-size-controls {
    position: fixed;
    top: 100px;
@@ -524,10 +504,16 @@ body {
  }
  
  .font-size-controls button:hover {
-   background-color: var(--primary-color-dark);
+   background-color: #0066ff;
  }
  
  .font-size-controls button:focus {
    outline: 2px solid var(--primary-color);
    outline-offset: 2px;
  }
+
+ @media (max-width: 768px) {
+   .font-size-controls {
+      display: none;
+   }
+}
