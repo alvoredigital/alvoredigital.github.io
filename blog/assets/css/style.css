@@ -8,6 +8,7 @@
     --accent-color: #f5f5f5;
     --hover-color: #004499;
     --border-color: #e0e0e0;
+    --color-text-input-newsletter: rgb(91, 91, 91);
 }
 
 .dark {
@@ -19,6 +20,7 @@
     --accent-color: #2a2a2a;
     --hover-color: #1265ca;
     --border-color: #444444;
+    --color-text-input-newsletter: rgb(187, 187, 187);
 }
 
 * {
@@ -378,6 +380,53 @@ main {
     margin-right: 10px;
     color: var(--primary-color);
 }
+
+/* newsletter */
+#newsletter-form {
+    display: flex;
+    margin-top: 15px;
+ }
+ 
+ #newsletter-form .newslatter-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    height: 48px;
+ }
+ #newsletter-form .newslatter-input::placeholder {
+    color: var(--color-text-input-newsletter);
+ } 
+ #newsletter-form .cta-button-footer {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    margin-top: 10px;
+    cursor: pointer;
+    box-sizing: border-box; 
+    border: 2px solid transparent;
+ }
+ #newsletter-form .cta-button-footer:hover {
+    background-color: var(--hover-color);
+    border-color: var(--border-button-color);
+ }
+ 
+ #newsletter-form button {
+    border: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+ }
 
 /* Footer */
 footer {
