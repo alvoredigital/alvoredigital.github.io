@@ -75,6 +75,10 @@ nav ul li a.active {
    color: var(--primary-color);
 }
 
+nav ul li a.active {
+   font-weight: bold;
+}
+
 .dark-mode-toggle {
    background: none;
    border: none;

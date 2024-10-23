@@ -1,26 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Uso - Insite Digital</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Insite Digital - Soluções em Marketing Digital</title>
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <style>
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center;
+                min-height: 70vh;
+                display: flex;
+                align-items: center;
+            }
+            .hero-content {
+                padding: 60px 0;
+            }
+            .typing-text {
+                height: auto;
+                min-height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="Insite Digital Logo">
+            <a href="#home" class="logo">
+                <img src="blog/assets/img/logo_alvore_digital_svg.svg" alt="Insite Digital Logo">
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#servicos">Serviços</a></li>
                     <li><a href="index.html#sobre">Sobre</a></li>
-                    <li><a href="index.html#portfolio">Portfólio</a></li>
-                    <li><a href="index.html#clientes">Clientes</a></li>
+                    <li><a href="index.html#pacotes">Pacotes</a></li>
+                    <li><a href="index.html#valores">Valores</a></li>
                     <li><a href="index.html#blog">Blog</a></li>
                     <li><a href="index.html#contato">Contato</a></li>
                 </ul>
@@ -29,9 +52,11 @@
                 <i class="fas fa-sun"></i>
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <label class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
         </div>
     </header>
 
@@ -76,39 +101,43 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt="Insite Digital Logo">
-                    <p>Soluções em Marketing Digital</p>
+                    <img src="blog/assets/img/logo_alvore_digital_mobile_svg.svg" alt="Insite Digital Logo">
+                    <p>Transformando negócios através do marketing digital</p>
                 </div>
                 <div class="footer-links">
                     <h4>Links Rápidos</h4>
                     <ul>
-                        <li><a href="index.html#home">Home</a></li>
-                        <li><a href="index.html#servicos">Serviços</a></li>
-                        <li><a href="index.html#sobre">Sobre</a></li>
-                        <li><a href="index.html#portfolio">Portfólio</a></li>
-                        <li><a href="index.html#contato">Contato</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-services">
                     <h4>Nossos Serviços</h4>
                     <ul>
+                        <li>Desenvolvimento Web</li>
                         <li>SEO</li>
                         <li>Marketing de Conteúdo</li>
-                        <li>Mídias Sociais</li>
-                        <li>Web Design</li>
+                        <li>Google Ads</li>
+                        <li>Gestão de Redes Sociais</li>
+                        <li>Analytics e Relatórios</li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
                     <h4>Assine Nossa Newsletter</h4>
-                    <p>Fique por dentro das últimas novidades e tendências do marketing digital.</p>
+                    <p>Receba as últimas novidades e dicas de marketing digital</p>
                     <form id="newsletter-form">
-                        <input type="email" placeholder="Seu e-mail" required>
-                        <button type="submit" class="cta-button">Assinar</button>
+                        <input type="email" class="newslatter-input" placeholder="Seu e-mail" required>
+                        <button type="submit" class="cta-button-footer">Assinar</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Insite Digital. Todos os direitos reservados.</p>
+                <p>&copy; <span id="current-year"></span> <span class="nome-empresa">Alvore Digital</span>. Todos os direitos reservados.</p>
                 <ul>
                     <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                     <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
@@ -117,6 +146,11 @@
         </div>
     </footer>
 
+    <script>
+        // Obtém o ano atual
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

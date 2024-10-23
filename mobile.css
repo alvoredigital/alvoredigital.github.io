@@ -525,6 +525,16 @@ section h2 {
    color: var(--primary-color);
 }
 
+.contact-info a {
+   color: var(--text-color);
+   text-decoration: none;
+}
+
+.contact-info a:hover {
+   text-decoration: underline;
+   color: var(--primary-color);
+}
+
 .social-icons {
    margin-top: 15px;
 }

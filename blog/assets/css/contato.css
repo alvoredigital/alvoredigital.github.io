@@ -74,6 +74,9 @@ nav ul li a:hover,
 nav ul li a.active {
    color: var(--primary-color);
 }
+nav ul li a.active {
+   font-weight: bold;
+}
 
 .dark-mode-toggle {
    background: none;
@@ -204,6 +207,15 @@ main {
 
 .contact-info i:hover {
    color: var(--hover-color);
+}
+
+.contact-info a {
+   color: var(--text-color);
+   text-decoration: none;
+}
+.contact-info a:hover {
+   color: var(--primary-color);
+   text-decoration: underline;
 }
 
 .social-icons {
