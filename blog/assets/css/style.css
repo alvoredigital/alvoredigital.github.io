@@ -381,10 +381,15 @@ main {
     color: var(--primary-color);
 }
 
-/* newsletter */
+/* newsletter - blog */
+.post-newsletter {
+    width: 100%;
+}
+
 #newsletter-form {
     display: flex;
     margin-top: 15px;
+    width: 100%;
  }
  
  #newsletter-form .newslatter-input {
@@ -718,6 +723,11 @@ footer ul li a:hover {
     .search-results-content {
         margin: 20px;
         padding: 15px;
+    }
+
+    /* newsletter - blog */
+    .post-newsletter {
+        padding: 10px;
     }
 
     .hero, .contact-hero, .about-hero {
