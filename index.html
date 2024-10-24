@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -279,7 +279,7 @@
                     </article>
                 </div>
                 <div class="blog-cta">
-                    <a href="#" class="cta-button">Ver Todos os Posts</a>
+                    <a href="/blog/index.html" target="_blank" class="cta-button">Ver Todos os Posts</a>
                 </div>
             </div>
         </section>
@@ -374,11 +374,23 @@
         <span class="sr-only">Chat on WhatsApp</span>
     </a>
 
+    <script src="script.js"></script>
     <script>
+
+        // Verificar preferência do usuário ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModePreference = localStorage.getItem('darkMode');
+            if (darkModePreference === null) {
+                // Se não houver preferência salva, definir como dark mode
+                setDarkMode(true);
+            } else {
+                // Se houver preferência salva, usar essa preferência
+                setDarkMode(darkModePreference === 'true');
+            }
+        });
         // Obtém o ano atual
         const currentYear = new Date().getFullYear();
         document.getElementById('current-year').textContent = currentYear;
     </script>
-    <script src="script.js"></script>
 </body>
 </html>

@@ -1067,7 +1067,7 @@ html {
 
    .legal-content {
        padding-top: 100px;
-       padding-bottom: 20px;
+       /* padding-bottom: 20px; */
    }
 
    .legal-content h1 {
