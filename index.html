@@ -6,6 +6,8 @@
     <title>Insite Digital - Soluções em Marketing Digital</title>
     <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css" />
+    <link rel="stylesheet" href="google_apps_script.css" />
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
@@ -374,7 +376,22 @@
         <span class="sr-only">Chat on WhatsApp</span>
     </a>
 
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="google_apps_script.js"></script>
     <script>
 
         // Verificar preferência do usuário ao carregar a página

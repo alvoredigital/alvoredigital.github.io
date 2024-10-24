@@ -61,18 +61,6 @@ function fadeInElements() {
 // Chamar a função quando a página carregar
 window.addEventListener('load', fadeInElements);
 
-// Formulário de contato
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Simulação de envio do formulário
-    const formData = new FormData(this);
-    console.log('Dados do formulário:', Object.fromEntries(formData));
-
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-    this.reset();
-});
-
 // Header fixo com mudança de estilo ao rolar
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');

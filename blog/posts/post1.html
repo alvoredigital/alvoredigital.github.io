@@ -108,17 +108,18 @@
         </article>        
 
         <aside class="contact-form-container">
-            <div class="contact-form" id="contactForm">
+            <div class="contact-form" id="postForm">
                 <h2>Quer ajuda com seu projeto de SEO?</h2>
                 <p>Entre em contato conosco para uma consulta gratuita!</p>
                 <form id="contactForm">
+                    <input type="hidden" id="postId" name="postId" value="post1">
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="text" id="whatsapp" name="whatsapp" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem</label>
@@ -156,6 +157,20 @@
     <div class="font-size-controls">
         <button id="decreaseFontSize" aria-label="Diminuir tamanho da fonte">A-</button>
         <button id="increaseFontSize" aria-label="Aumentar tamanho da fonte">A+</button>
+    </div>
+
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
     </div>
 
     <script>

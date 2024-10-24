@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Alvore Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/contato.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/contato.css" />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -61,8 +62,12 @@
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="text">Whatsapp</label>
-                    <input type="text" id="email" name="email" required>
+                    <label for="text">Email</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="text">WhatsApp</label>
+                    <input type="text" id="whatsapp" name="whatsapp" required>
                 </div>
                 <div class="form-group">
                     <label for="subject">Assunto</label>
@@ -105,11 +110,26 @@
         <button id="acceptCookies">Aceitar</button>
     </div>
 
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
+    </div>
+
     <script>
         // Obtém o ano atual
         const currentYear = new Date().getFullYear();
         document.getElementById('current-year').textContent = currentYear;
     </script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/contato-form.js"></script>
 </body>
 </html>
