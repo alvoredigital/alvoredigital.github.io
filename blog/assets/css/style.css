@@ -574,6 +574,11 @@ footer ul li a:hover {
 .cookie-consent a {
     color: var(--primary-color);
     text-decoration: underline;
+    font-weight: bold;
+}
+
+.cookie-consent a:hover {
+    color: var(--hover-color);
 }
 
 .cookie-consent button {

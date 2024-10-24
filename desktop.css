@@ -213,6 +213,15 @@ html:not(.dark) .mode-toggle .fa-sun {
    margin-bottom: 15px;
 }
 
+.cookie-banner a {
+   color: var(--primary-color);
+   font-weight: bold;
+}
+
+.cookie-banner a:hover {
+   color: var(--hover-color);
+}
+
 .cookie-banner button {
    background-color: var(--primary-color);
    color: var(--background-color);

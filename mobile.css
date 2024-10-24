@@ -746,6 +746,11 @@ footer {
    margin-bottom: 10px;
 }
 
+.cookie-banner a {
+   color: var(--primary-color);
+   font-weight: bold;
+}
+
 .cookie-banner button {
    background-color: var(--primary-color);
    color: var(--background-color);
