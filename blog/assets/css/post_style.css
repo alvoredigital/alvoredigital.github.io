@@ -520,7 +520,7 @@ body {
 
 
 /* Modal */
-.modal {
+.modal-form {
    display: none; /* Escondido por padrão */
    position: fixed;
    top: 0;
@@ -531,13 +531,13 @@ body {
    z-index: 1000;
 }
 
-.modal.show {
+.modal-form.show {
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.modal-content {
+.modal-form-content {
    position: relative;
    background-color: var(--background-color);
    padding: 20px;
@@ -548,7 +548,7 @@ body {
 }
 
 /* Botão 'X' para fechar o modal */
-.close-button {
+.close-button-modal-form {
    position: absolute;
    top: 10px;
    right: 15px;
@@ -559,7 +559,7 @@ body {
 }
 
 /* Spinner de carregamento */
-.spinner {
+.spinner-modal-form {
    border: 4px solid rgba(0, 0, 0, 0.1);
    border-left-color: var(--primary-color);
    border-radius: 50%;
@@ -583,7 +583,7 @@ body {
 }
 
 /* Botão 'OK' */
-.ok-button {
+.ok-button-modal-form {
    margin-top: 20px;
    padding: 10px 20px;
    background-color: var(--primary-color);
@@ -593,7 +593,7 @@ body {
    cursor: pointer;
 }
 
-.ok-button:hover {
+.ok-button-modal-form:hover {
    background-color: var(--hover-color);
 }
 

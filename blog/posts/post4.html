@@ -100,19 +100,20 @@
             <div class="contact-form" id="contactForm">
                 <h2>Precisa de ajuda para implementar análise de dados em seu marketing?</h2>
                 <p>Entre em contato conosco para uma consultoria especializada!</p>
-                <form id="contactForm">
+                <form id="contactPostForm">
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="text" id="whatsapp" name="whatsapp" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
+                    <input type="hidden" id="postId" name="postId" value="post4">
                     <button type="submit">Enviar</button>
                 </form>
             </div>
@@ -145,6 +146,20 @@
     <div class="font-size-controls">
         <button id="decreaseFontSize" aria-label="Diminuir tamanho da fonte">A-</button>
         <button id="increaseFontSize" aria-label="Aumentar tamanho da fonte">A+</button>
+    </div>
+
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal-form hidden">
+        <div class="modal-form-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button-modal-form">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner-modal-form"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button-modal-form hidden">OK</button>
+        </div>
     </div>
 
     <script>
