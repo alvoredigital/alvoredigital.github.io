@@ -23,7 +23,7 @@
    padding: 20px;
    border-radius: 8px;
    text-align: center;
-   width: 300px;
+   width: 500px;
    color: var(--text-color);
 }
 
@@ -79,4 +79,11 @@
 
 .hidden {
    display: none;
+}
+
+ /* responsive */
+ @media (max-width: 768px) {
+   .modal-content {
+       width: 350px;
+    }
 }

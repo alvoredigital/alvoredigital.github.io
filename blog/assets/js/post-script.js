@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contactForm');
+  const form = document.getElementById('contactPostForm');
   const modal = document.getElementById('modal');
   const spinner = document.getElementById('loadingSpinner');
   const responseMessage = document.getElementById('responseMessage');
@@ -7,66 +7,50 @@ document.addEventListener('DOMContentLoaded', function() {
   const okButton = document.getElementById('okButton');
 
   form.addEventListener('submit', function(event) {
-    event.preventDefault();
+      event.preventDefault();
 
-    modal.classList.add('show');
-    spinner.classList.remove('hidden');
-    okButton.classList.add('hidden');
-    responseMessage.textContent = '';
+      // Exibe o modal e o spinner enquanto os dados estão sendo enviados
+      modal.classList.add('show');
+      spinner.classList.remove('hidden');
+      okButton.classList.add('hidden'); // Esconde o botão OK durante o carregamento
+      responseMessage.textContent = ''; // Limpa qualquer mensagem anterior
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+      const formData = new FormData(form);
+      const data = new URLSearchParams();
 
-    // Adiciona o ID do post, se existir
-    const postIdInput = document.getElementById('postId');
-    if (postIdInput) {
-      data.postId = postIdInput.value;
-    }
+      // Converte FormData para URLSearchParams
+      formData.forEach((value, key) => {
+          data.append(key, value);
+      });
 
-    console.log('Dados a serem enviados:', data);
-
-    fetch('https://script.google.com/macros/s/AKfycby3OkKLWEWc7bjQln4FISIUmyTSVn15MwEQFE3ApiOBv7SxS9vVhufY8jNHShrKpYTl/exec', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors'
-    })
-    .then(response => {
-      console.log('Resposta bruta:', response);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(result => {
-      console.log('Resultado:', result);
-      spinner.classList.add('hidden');
-      responseMessage.textContent = result.message || 'Mensagem enviada com sucesso!';
-      if (result.result === 'success') {
-        form.reset();
-      }
-      okButton.classList.remove('hidden');
-    })
-    .catch(error => {
-      console.error('Erro detalhado:', error);
-      spinner.classList.add('hidden');
-      if (error.message === 'Failed to fetch') {
-        responseMessage.textContent = 'Erro de conexão. Verifique sua internet e tente novamente.';
-      } else {
-        responseMessage.textContent = `Erro ao enviar dados: ${error.message}. Tente novamente mais tarde.`;
-      }
-      okButton.classList.remove('hidden');
-    });
+      // Envia os dados ao Google Apps Script
+      fetch('https://script.google.com/macros/s/AKfycbwKAXUtdnk-4bF7i16HsCUDoQkfxE5wm8Hm7cwBJu58-wBm6-YOb9Slrlpxzl9Wsef2/exec', {
+          method: 'POST',
+          body: data,
+      })
+      .then(response => response.text())
+      .then(result => {
+          spinner.classList.add('hidden'); // Esconde o spinner
+          responseMessage.textContent = result; // Exibe a resposta do Google Apps Script
+          form.reset(); // Limpa o formulário
+          okButton.classList.remove('hidden'); // Mostra o botão OK
+      })
+      .catch(error => {
+          spinner.classList.add('hidden'); // Esconde o spinner
+          responseMessage.textContent = 'Erro ao enviar dados. Tente novamente mais tarde.';
+          console.error('Erro:', error);
+          okButton.classList.remove('hidden'); // Mostra o botão OK
+      });
   });
 
+  // Fecha o modal ao clicar no botão 'X'
   closeModal.addEventListener('click', function() {
-    modal.classList.remove('show');
+      modal.classList.remove('show');
   });
 
+  // Fecha o modal ao clicar no botão 'OK'
   okButton.addEventListener('click', function() {
-    modal.classList.remove('show');
+      modal.classList.remove('show');
   });
 
   function adjustFormPosition() {

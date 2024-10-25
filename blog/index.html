@@ -85,7 +85,7 @@
                 <h4>Assine Nossa Newsletter</h4>
                 <p>Receba as últimas novidades e dicas de marketing digital</p>
                 <form id="newsletter-form">
-                    <input type="email" class="newslatter-input" placeholder="Seu e-mail" required>
+                    <input type="email" name="email" class="newslatter-input" placeholder="Seu e-mail" required>
                     <button type="submit" class="cta-button-footer">Assinar</button>
                 </form>
             </div>
@@ -114,6 +114,20 @@
         <p>Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
         <button id="acceptCookies">Aceitar</button>
     </div>
+
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
+    </div>
     
     <script>
         // Obtém o ano atual
@@ -121,5 +135,6 @@
         document.getElementById('current-year').textContent = currentYear;
     </script>
     <script src="assets/js/script.js"></script>
+    <!-- <script src="assets/js/newsletter-form.js"></script> -->
 </body>
 </html>
