@@ -7,50 +7,42 @@ document.addEventListener('DOMContentLoaded', function() {
   const okButton = document.getElementById('okButton');
 
   form.addEventListener('submit', function(event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      // Exibe o modal e o spinner enquanto os dados estão sendo enviados
-      modal.classList.add('show');
-      spinner.classList.remove('hidden');
-      okButton.classList.add('hidden'); // Esconde o botão OK durante o carregamento
-      responseMessage.textContent = ''; // Limpa qualquer mensagem anterior
+    modal.classList.add('show');
+    spinner.classList.remove('hidden');
+    okButton.classList.add('hidden');
+    responseMessage.textContent = '';
 
-      const formData = new FormData(form);
-      const data = new URLSearchParams();
+    const formData = new FormData(form);
 
-      // Converte FormData para URLSearchParams
-      formData.forEach((value, key) => {
-          data.append(key, value);
-      });
-
-      // Envia os dados ao Google Apps Script
-      fetch('https://script.google.com/macros/s/AKfycbwKAXUtdnk-4bF7i16HsCUDoQkfxE5wm8Hm7cwBJu58-wBm6-YOb9Slrlpxzl9Wsef2/exec', {
-          method: 'POST',
-          body: data,
-      })
-      .then(response => response.text())
-      .then(result => {
-          spinner.classList.add('hidden'); // Esconde o spinner
-          responseMessage.textContent = result; // Exibe a resposta do Google Apps Script
-          form.reset(); // Limpa o formulário
-          okButton.classList.remove('hidden'); // Mostra o botão OK
-      })
-      .catch(error => {
-          spinner.classList.add('hidden'); // Esconde o spinner
-          responseMessage.textContent = 'Erro ao enviar dados. Tente novamente mais tarde.';
-          console.error('Erro:', error);
-          okButton.classList.remove('hidden'); // Mostra o botão OK
-      });
+    fetch('https://script.google.com/macros/s/AKfycbwej_4fc-s6lxMH0dDJDTvyYLXZmuyhj7MTWoUHUdoZl1KVeUjX52VKpAT-1B0MFkNN/exec', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      spinner.classList.add('hidden');
+      responseMessage.textContent = data.message; // Exibe apenas a mensagem
+      if (data.result === 'success') {
+        form.reset();
+      }
+      okButton.classList.remove('hidden');
+    })
+    .catch(error => {
+      spinner.classList.add('hidden');
+      responseMessage.textContent = 'Erro ao enviar dados. Tente novamente mais tarde.';
+      console.error('Erro:', error);
+      okButton.classList.remove('hidden');
+    });
   });
 
-  // Fecha o modal ao clicar no botão 'X'
   closeModal.addEventListener('click', function() {
-      modal.classList.remove('show');
+    modal.classList.remove('show');
   });
 
-  // Fecha o modal ao clicar no botão 'OK'
   okButton.addEventListener('click', function() {
-      modal.classList.remove('show');
+    modal.classList.remove('show');
   });
 
   function adjustFormPosition() {
