@@ -1,18 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Metatags básicas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insite Digital - Soluções em Marketing Digital</title>
+    <title>Alvore Digital | Desenvolvimento Web e Marketing Digital Personalizado</title>
+    <meta name="description" content="A Alvore Digital oferece soluções personalizadas em desenvolvimento web, criação de páginas, landing pages e blogs. Impulsione seu negócio online com nossa expertise em marketing digital.">
+    <meta name="keywords" content="desenvolvimento web, criação de páginas, landing pages, blogs, marketing digital, SEO, Alvore Digital">
+    <meta name="author" content="Alvore Digital">
+    <link rel="canonical" href="https://alvoredigital.github.io">
+
+    <!-- Controle de robôs de busca -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alvoredigital.github.io">
+    <meta property="og:title" content="Alvore Digital | Soluções em Desenvolvimento Web e Marketing Digital">
+    <meta property="og:description" content="Desenvolva sua presença online com a Alvore Digital. Especialistas em criação de sites, landing pages e estratégias de marketing digital personalizadas.">
+    <meta property="og:image" content="https://alvoredigital.github.io/blog/assets/img/logo_alvore_digital_mobile_cortada.png">
+    <meta property="og:image:alt" content="Alvore Digital - Desenvolvimento Web e Marketing Digital">
+    <meta property="og:site_name" content="Alvore Digital">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alvoredigital.github.io">
+    <meta name="twitter:title" content="Alvore Digital | Desenvolvimento Web e Marketing Digital Inovador">
+    <meta name="twitter:description" content="Transforme seu negócio online com soluções web personalizadas e estratégias de marketing digital eficientes da Alvore Digital.">
+    <meta name="twitter:image" content="https://alvoredigital.github.io/blog/assets/img/logo_alvore_digital_mobile_cortada.png">
+    <meta name="twitter:image:alt" content="Alvore Digital - Soluções Web Personalizadas">
+
+    <!-- Metadados estruturados (JSON-LD) para Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebDesignCompany",
+    "name": "Alvore Digital",
+    "url": "https://alvoredigital.github.io",
+    "logo": "https://alvoredigital.github.io/blog/assets/img/logo_header_x32-y32.png",
+    "description": "A Alvore Digital oferece serviços de desenvolvimento web, criação de páginas, landing pages, blogs e soluções de marketing digital personalizadas.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida General Osório",
+        "addressLocality": "João Pessoa",
+        "addressRegion": "PB",
+        "postalCode": "58010-001",
+        "addressCountry": "BR"
+    },
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-83-8691-4301",
+        "contactType": "customer service"
+    },
+    "sameAs": [
+        "https://www.facebook.com/alvoredigital",
+        "https://www.instagram.com/alvore.digital",
+        "https://www.linkedin.com/in/alvoredigital",
+        "https://wa.me/5583986914301"
+    ]
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="blog/assets/img/logo_header.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="blog/assets/img/logo_header_x32-y32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="blog/assets/img/logo_header_x16-y16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="blog/assets/img/logo_header_x180-y180.png">
+
+    <!-- Preconnect e prefetch para melhorar o desempenho -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Outras metatags úteis -->
+    <meta name="theme-color" content="#0066cc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- stylesheets -->
     <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css" />
     <link rel="stylesheet" href="google_apps_script.css" />
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
+    
     <style>
         @media (max-width: 768px) {
             .hero {
@@ -308,13 +383,13 @@
                     </form>
                     <div class="contact-info">
                         <h3>Informações de Contato</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - São Paulo, SP</p>
-                        <p><i class="fas fa-phone"></i> <a href="#">(11) 1234-5678</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:#">contato@insitedigital.com.br</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Avenida General Osório - João Pessoa, PB</p>
+                        <p><i class="fas fa-phone"></i> <a href="https://wa.me/5583986914301?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços." target="_blank">(83) 98691-4301</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:alvoredigital@gmail.com">alvoredigital@gmail.com</a></p>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/alvore.digital" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="www.linkedin.com/in/alvoredigital" target="_blank"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
@@ -371,7 +446,7 @@
             </div>
         </div>
     </footer>
-    <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+    <a href="https://wa.me/5583986914301?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços." target="_blank" rel="noopener noreferrer" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
         <span class="sr-only">Chat on WhatsApp</span>
     </a>
