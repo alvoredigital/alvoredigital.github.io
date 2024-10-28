@@ -70,6 +70,7 @@
     <!-- stylesheets -->
     <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
     <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css" />
+    <link rel="stylesheet" href="google_apps_script.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
@@ -98,7 +99,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="#home" class="logo">
+            <a href="index.html" class="logo">
                 <img src="blog/assets/img/logo_alvore_digital_svg.svg" alt="Insite Digital Logo">
             </a>
             <nav>
@@ -127,7 +128,7 @@
     <main class="legal-content">
         <div class="container">
             <h1>Termos de Uso</h1>
-            <p>Última atualização: [Data]</p>
+            <p>Última atualização: 23 de setembro de 2024</p>
             
             <section>
                 <h2>1. Aceitação dos Termos</h2>
@@ -195,7 +196,7 @@
                     <h4>Assine Nossa Newsletter</h4>
                     <p>Receba as últimas novidades e dicas de marketing digital</p>
                     <form id="newsletter-form">
-                        <input type="email" class="newslatter-input" placeholder="Seu e-mail" required>
+                        <input type="email" name="email" class="newslatter-input" placeholder="Seu e-mail" required>
                         <button type="submit" class="cta-button-footer">Assinar</button>
                     </form>
                 </div>
@@ -210,7 +211,78 @@
         </div>
     </footer>
 
+    <!-- Modal para exibir o spinner e a mensagem -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <!-- Botão 'X' para fechar o modal -->
+            <span id="closeModal" class="close-button">&times;</span>
+            <!-- Spinner de carregamento -->
+            <div id="loadingSpinner" class="spinner"></div>
+            <!-- Mensagem de resposta -->
+            <div id="responseMessage"></div>
+            <!-- Botão 'OK' para fechar o modal -->
+            <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
+    </div>
+
     <script>
+        // Formulário de newsletter
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('newsletter-form');
+            const modal = document.getElementById('modal');
+            const spinner = document.getElementById('loadingSpinner');
+            const responseMessage = document.getElementById('responseMessage');
+            const closeModal = document.getElementById('closeModal');
+            const okButton = document.getElementById('okButton');
+        
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                // Exibe o modal e o spinner enquanto os dados estão sendo enviados
+                modal.classList.add('show');
+                spinner.classList.remove('hidden');
+                okButton.classList.add('hidden'); // Esconde o botão OK durante o carregamento
+                responseMessage.textContent = ''; // Limpa qualquer mensagem anterior
+        
+                const formData = new FormData(form);
+                const data = new URLSearchParams();
+        
+                // Converte FormData para URLSearchParams
+                formData.forEach((value, key) => {
+                    data.append(key, value);
+                });
+        
+                // Envia os dados ao Google Apps Script
+                fetch('https://script.google.com/macros/s/AKfycbzDowN6EWIiJ8fvCydGMF-aAa6_zoVNpjU0SkAXHbZwSGS8Jgd1aAjGmfpp4Sm8oahy3A/exec', {
+                    method: 'POST',
+                    body: data,
+                })
+                .then(response => response.text())
+                .then(result => {
+                    spinner.classList.add('hidden'); // Esconde o spinner
+                    responseMessage.textContent = result; // Exibe a resposta do Google Apps Script
+                    form.reset(); // Limpa o formulário
+                    okButton.classList.remove('hidden'); // Mostra o botão OK
+                })
+                .catch(error => {
+                    spinner.classList.add('hidden'); // Esconde o spinner
+                    responseMessage.textContent = 'Erro ao enviar dados. Tente novamente mais tarde.';
+                    console.error('Erro:', error);
+                    okButton.classList.remove('hidden'); // Mostra o botão OK
+                });
+            });
+        
+            // Fecha o modal ao clicar no botão 'X'
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('show');
+            });
+        
+            // Fecha o modal ao clicar no botão 'OK'
+            okButton.addEventListener('click', function() {
+                modal.classList.remove('show');
+            });
+        });
+
         // Alternância entre modo claro e escuro
         const modeToggle = document.querySelector('.mode-toggle');
         const html = document.documentElement;
