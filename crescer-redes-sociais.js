@@ -182,3 +182,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentYear = new Date().getFullYear();
     document.getElementById('current-year').textContent = currentYear;
 });
+
+
+// Typing Script
+document.addEventListener('DOMContentLoaded', function() {
+    const phrases = [
+        "Destaque seu perfil com nossos pacotes de seguidores e alcance mais clientes!",
+        "Mais curtidas, mais visibilidade! Pacotes promocionais para impulsionar suas redes sociais.",
+        "Transforme seu engajamento: aumente seguidores, curtidas e visualizações hoje mesmo!"
+    ];
+    const typingText = document.querySelector('.typing-animation');
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 50;
+
+    function typePhrase() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 30;
+        } else {
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 50;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 1000; // Pause before starting to delete
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500; // Pause before typing next phrase
+        }
+
+        setTimeout(typePhrase, typingSpeed);
+    }
+
+    typePhrase();
+});
