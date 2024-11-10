@@ -146,10 +146,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dark mode toggle
     const modeToggle = document.querySelector('.mode-toggle');
     const html = document.documentElement;
+    const sunIcon = document.querySelector('.mode-toggle .fa-sun');
+    const moonIcon = document.querySelector('.mode-toggle .fa-moon');
 
     function setDarkMode(isDark) {
         html.classList.toggle('dark', isDark);
         localStorage.setItem('darkMode', isDark);
+        updateModeIcons(isDark);
+    }
+
+    function updateModeIcons(isDark) {
+        if (isDark) {
+            sunIcon.style.display = 'inline-block';
+            moonIcon.style.display = 'none';
+        } else {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'inline-block';
+        }
     }
 
     modeToggle.addEventListener('click', () => {
@@ -161,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModePreference = localStorage.getItem('darkMode');
     if (darkModePreference === 'true') {
         setDarkMode(true);
+    } else {
+        setDarkMode(false);
     }
 
     // Animations
@@ -182,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentYear = new Date().getFullYear();
     document.getElementById('current-year').textContent = currentYear;
 });
-
 
 // Typing Script
 document.addEventListener('DOMContentLoaded', function() {
