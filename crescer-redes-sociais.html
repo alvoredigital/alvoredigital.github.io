@@ -78,8 +78,7 @@
     <meta name="theme-color" content="#0066cc">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-    
+   
     <!-- stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" media="screen and (min-width: 769px)" href="crescer-redes-sociais.css" />
@@ -158,21 +157,27 @@
                     </div>
                     <div class="right-column">
                         <div id="cart-container">
-                            <!-- Cart content will be dynamically inserted here via JavaScript -->
+                            <h3>Seu Carrinho</h3>
+                            <ul id="cart-items"></ul>
+                            <p id="cart-total">Total: R$ 0.00</p>
+                            <button id="checkout-button" class="cta-button">Finalizar Pedido</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Modal for checkout form -->
+        <!-- Checkout Modal -->
         <div id="checkout-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Finalizar Pedido</h2>
                 <form id="checkout-form">
-                    <input type="text" id="customer-name" placeholder="Seu nome" required>
-                    <input type="email" id="customer-email" placeholder="Seu e-mail" required>
+                    <input type="text" id="customer-name" name="name" placeholder="Seu nome" required>
+                    <input type="email" id="customer-email" name="email" placeholder="Seu e-mail" required>
+                    <input type="tel" id="customer-phone" name="phone" placeholder="Seu telefone" required>
+                    <input type="text" id="customer-instagram" name="instagram" placeholder="Seu usuário do Instagram">
+                    <textarea id="customer-notes" name="notes" placeholder="Observações adicionais"></textarea>
                     <button type="submit">Enviar Pedido</button>
                 </form>
             </div>
@@ -230,6 +235,35 @@
                     <button class="testimonial-nav next" aria-label="Próximo depoimento">&#10095;</button>
                 </div>
                 <div class="testimonial-dots"></div>
+            </div>
+        </section>
+
+        <!-- Perguntas Frequentes -->
+        <section id="faq" class="faq scroll-section">
+            <div class="container">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3 class="faq-question">Como funciona o serviço de crescimento de redes sociais?</h3>
+                        <p class="faq-answer">Nosso serviço utiliza estratégias avançadas de marketing digital para aumentar sua visibilidade e engajamento nas redes sociais. Trabalhamos com métodos seguros e eficazes para crescer sua audiência de forma orgânica.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Quanto tempo leva para ver resultados?</h3>
+                        <p class="faq-answer">Os resultados podem variar dependendo de diversos fatores, mas geralmente nossos clientes começam a ver um aumento significativo em suas métricas dentro de 2 a 4 semanas após o início do serviço.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">O serviço é seguro para minha conta?</h3>
+                        <p class="faq-answer">Sim, nosso sistema é 100% confiável e seguro. Utilizamos apenas métodos aprovados pelas plataformas de redes sociais, garantindo que sua conta não corra riscos de penalidades ou banimentos.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Posso escolher o tipo de seguidores que quero atrair?</h3>
+                        <p class="faq-answer">Sim, oferecemos opções para direcionar seu crescimento para públicos específicos, baseados em localização, interesses e demografia, garantindo que você atraia seguidores relevantes para sua marca ou negócio.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Vocês oferecem garantia de resultados?</h3>
+                        <p class="faq-answer">Oferecemos uma garantia de satisfação. Se você não estiver satisfeito com os resultados dentro de 30 dias, trabalharemos com você para ajustar nossa estratégia ou ofereceremos um reembolso.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -334,6 +368,34 @@
 
     <script src="crescer-redes-sociais.js"></script>
     <script src="social-media-cards.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    // Fecha todos os outros itens
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                        }
+                    });
+        
+                    // Abre ou fecha o item clicado
+                    item.classList.toggle('active');
+                    if (item.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 </html>

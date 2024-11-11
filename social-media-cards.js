@@ -241,14 +241,7 @@ function createCard(platform) {
             const priceInfo = platform.services[selectedService].find(p => p.quantity <= quantity);
             if (priceInfo) {
                 const totalPrice = (quantity / priceInfo.quantity) * priceInfo.price;
-                cart.push({
-                    platform: platform.name,
-                    service: selectedService,
-                    quantity: quantity,
-                    price: totalPrice
-                });
-                updateCartDisplay();
-                alert('Item adicionado ao carrinho!');
+                addToCart(platform.name, selectedService, quantity, totalPrice);
             } else {
                 alert('Quantidade inválida para o serviço selecionado.');
             }
@@ -260,130 +253,132 @@ function createCard(platform) {
     return card;
 }
 
+function addToCart(platform, service, quantity, price) {
+    const existingItem = cart.find(item => item.platform === platform && item.service === service);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+        existingItem.price += price;
+    } else {
+        cart.push({ platform, service, quantity, price });
+    }
+    updateCartDisplay();
+    alert('Item adicionado ao carrinho!');
+}
+
 function updateCartDisplay() {
-   const cartContainer = document.getElementById('cart-container');
-   if (!cartContainer) {
-       console.error('Cart container not found');
-       return;
-   }
+    const cartContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    let totalAmount = 0;
 
-   let cartHTML = '<h3>Seu Carrinho</h3>';
-   let totalAmount = 0;
+    cartContainer.innerHTML = '';
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${item.platform} - ${item.service}: ${item.quantity} unidades - R$ ${item.price.toFixed(2)}
+            <button onclick="removeFromCart(${index})">Remover</button>
+        `;
+        cartContainer.appendChild(li);
+        totalAmount += item.price;
+    });
 
-   if (cart.length === 0) {
-       cartHTML += '<p>Seu carrinho está vazio.</p>';
-   } else {
-       cartHTML += '<ul>';
-       cart.forEach((item, index) => {
-           cartHTML += `
-               <li>
-                   ${item.platform} - ${item.service}: ${item.quantity} unidades - R$ ${item.price.toFixed(2)}
-                   <button onclick="removeFromCart(${index})">Remover</button>
-               </li>
-           `;
-           totalAmount += item.price;
-       });
-       cartHTML += '</ul>';
-       cartHTML += `<p><strong>Total: R$ ${totalAmount.toFixed(2)}</strong></p>`;
-       cartHTML += '<button onclick="openCheckoutModal()">Finalizar Pedido</button>';
-   }
-
-   cartContainer.innerHTML = cartHTML;
+    cartTotal.textContent = `Total: R$ ${totalAmount.toFixed(2)}`;
 }
 
 function removeFromCart(index) {
-   cart.splice(index, 1);
-   updateCartDisplay();
+    cart.splice(index, 1);
+    updateCartDisplay();
 }
 
 function openCheckoutModal() {
-   if (cart.length === 0) {
-       alert('Seu carrinho está vazio.');
-       return;
-   }
+    if (cart.length === 0) {
+        alert('Seu carrinho está vazio.');
+        return;
+    }
 
-   const modal = document.getElementById('checkout-modal');
-   modal.style.display = 'block';
+    const modal = document.getElementById('checkout-modal');
+    modal.style.display = 'block';
 }
 
 function closeCheckoutModal() {
-   const modal = document.getElementById('checkout-modal');
-   modal.style.display = 'none';
+    const modal = document.getElementById('checkout-modal');
+    modal.style.display = 'none';
 }
 
 function checkout(event) {
-   event.preventDefault();
+    event.preventDefault();
 
-   const customerName = document.getElementById('customer-name').value;
-   const customerEmail = document.getElementById('customer-email').value;
+    const customerName = document.getElementById('customer-name').value;
+    const customerEmail = document.getElementById('customer-email').value;
 
-   if (!customerName || !customerEmail) {
-       alert('Nome e e-mail são obrigatórios para finalizar o pedido.');
-       return;
-   }
+    if (!customerName || !customerEmail) {
+        alert('Nome e e-mail são obrigatórios para finalizar o pedido.');
+        return;
+    }
 
-   const orderId = 'ORDER-' + Date.now();
-   const orderData = {
-       orderId: orderId,
-       customerName: customerName,
-       customerEmail: customerEmail,
-       items: cart,
-       totalAmount: cart.reduce((total, item) => total + item.price, 0)
-   };
+    const orderId = 'ORDER-' + Date.now();
+    const orderData = {
+        orderId: orderId,
+        customerName: customerName,
+        customerEmail: customerEmail,
+        items: cart,
+        totalAmount: cart.reduce((total, item) => total + item.price, 0)
+    };
 
-   // Send order data to Google Apps Script
-   sendOrderToGoogleAppsScript(orderData);
+    // Send order data to Google Apps Script
+    sendOrderToGoogleAppsScript(orderData);
 }
 
 async function sendOrderToGoogleAppsScript(orderData) {
-   try {
-       const response = await fetch('https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_ID/exec', {
-           method: 'POST',
-           body: JSON.stringify(orderData),
-       });
+    try {
+        const response = await fetch('https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_ID/exec', {
+            method: 'POST',
+            body: JSON.stringify(orderData),
+        });
 
-       if (response.ok) {
-           alert('Pedido enviado com sucesso! Seu número de pedido é: ' + orderData.orderId);
-           cart = [];
-           updateCartDisplay();
-           closeCheckoutModal();
-       } else {
-           throw new Error('Erro ao enviar o pedido');
-       }
-   } catch (error) {
-       console.error('Erro:', error);
-       alert('Erro ao enviar o pedido. Por favor, tente novamente.');
-   }
+        if (response.ok) {
+            alert('Pedido enviado com sucesso! Seu número de pedido é: ' + orderData.orderId);
+            cart = [];
+            updateCartDisplay();
+            closeCheckoutModal();
+        } else {
+            throw new Error('Erro ao enviar o pedido');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao enviar o pedido. Por favor, tente novamente.');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-   const platformSelect = document.getElementById('platform-select');
-   const container = document.getElementById('social-media-cards');
-   const modal = document.getElementById('checkout-modal');
-   const closeBtn = modal.querySelector('.close');
-   const checkoutForm = document.getElementById('checkout-form');
+    const platformSelect = document.getElementById('platform-select');
+    const container = document.getElementById('social-media-cards');
+    const modal = document.getElementById('checkout-modal');
+    const closeBtn = modal.querySelector('.close');
+    const checkoutForm = document.getElementById('checkout-form');
+    const checkoutButton = document.getElementById('checkout-button');
 
-   platformSelect.addEventListener('change', (e) => {
-       const selectedPlatform = e.target.value;
-       container.innerHTML = ''; // Clear previous card
+    platformSelect.addEventListener('change', (e) => {
+        const selectedPlatform = e.target.value;
+        container.innerHTML = ''; // Clear previous card
 
-       if (selectedPlatform) {
-           const platform = socialMediaPlatforms.find(p => p.name === selectedPlatform);
-           if (platform) {
-               container.appendChild(createCard(platform));
-           }
-       }
-   });
+        if (selectedPlatform) {
+            const platform = socialMediaPlatforms.find(p => p.name === selectedPlatform);
+            if (platform) {
+                container.appendChild(createCard(platform));
+            }
+        }
+    });
 
-   closeBtn.addEventListener('click', closeCheckoutModal);
+    closeBtn.addEventListener('click', closeCheckoutModal);
 
-   window.addEventListener('click', (event) => {
-       if (event.target === modal) {
-           closeCheckoutModal();
-       }
-   });
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeCheckoutModal();
+        }
+    });
 
-   checkoutForm.addEventListener('submit', checkout);
+    checkoutForm.addEventListener('submit', checkout);
+    checkoutButton.addEventListener('click', openCheckoutModal);
 
-   updateCartDisplay();
+    updateCartDisplay();
 });

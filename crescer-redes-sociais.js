@@ -52,46 +52,104 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll tracking for nav links
     function changeLinkState() {
         let index = sections.length;
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-        while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+        while(--index && scrollPosition < sections[index].offsetTop) {}
         
         navLinks.forEach((link) => link.classList.remove('active'));
-        navLinks[index].classList.add('active');
+
+        // Check if we're at or past the FAQ section
+        const faqSection = document.getElementById('faq');
+        if (faqSection && window.scrollY >= faqSection.offsetTop - 100) {
+            // Activate the last nav link (assumed to be "Contato")
+            navLinks[navLinks.length - 1].classList.add('active');
+        } else {
+            navLinks[index].classList.add('active');
+        }
     }
 
     changeLinkState();
     window.addEventListener('scroll', changeLinkState);
 
-    // Form submission
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-
-        // Simulate form submission (replace with actual API call)
-        simulateFormSubmission(data)
-            .then(response => {
-                alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
-                form.reset();
-            })
-            .catch(error => {
-                alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+    // FAQ functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                }
             });
+
+            // Toggle the clicked item
+            item.classList.toggle('active');
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = '0';
+            }
+        });
     });
 
-    // Simulate form submission (replace with actual API call)
-    function simulateFormSubmission(data) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (Math.random() > 0.1) { // 90% success rate
-                    resolve({ success: true });
-                } else {
-                    reject(new Error('Submission failed'));
-                }
-            }, 1000);
+    // Checkout form submission
+    checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const customerName = document.getElementById('customer-name').value;
+        const customerEmail = document.getElementById('customer-email').value;
+        const customerPhone = document.getElementById('customer-phone').value;
+        const customerInstagram = document.getElementById('customer-instagram').value;
+        const customerNotes = document.getElementById('customer-notes').value;
+
+        if (!customerName || !customerEmail || !customerPhone) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
+
+        const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
+        const formData = new FormData();
+        formData.append('name', customerName);
+        formData.append('email', customerEmail);
+        formData.append('phone', customerPhone);
+        formData.append('instagram', customerInstagram);
+        formData.append('notes', customerNotes);
+        formData.append('total', total);
+        formData.append('items', JSON.stringify(cart));
+
+        // Send order data to Google Forms
+        fetch('https://script.google.com/macros/s/AKfycbwa_Ol2oG-Q9J-1A3LMXUjXqS1vCF6ccPQoiVKCziX006U5FhZWU9XRxuE3vEiMKJaV/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                const orderId = data.orderId;
+                const message = `Olá! Acabei de fazer um pedido (ID: ${orderId}) no valor de R$ ${total}. Gostaria de mais informações sobre o andamento do meu pedido.`;
+                const whatsappLink = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+                
+                alert(`Pedido enviado com sucesso! Seu número de pedido é: ${orderId}`);
+                window.open(whatsappLink, '_blank');
+
+                // Clear the cart and close the modal
+                cart = [];
+                updateCart();
+                checkoutModal.style.display = 'none';
+            } else {
+                alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
         });
-    }
+    });
 
     // Newsletter form submission
     const newsletterForm = document.getElementById('newsletter-form');

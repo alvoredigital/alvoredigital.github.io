@@ -63,10 +63,10 @@ header .container {
 
 nav {
    display: none;
-   width: 100%;
    position: fixed;
    top: 0;
    left: 0;
+   width: 100%;
    height: 100%;
    background-color: var(--background-color);
    padding: 60px 0 10px;
@@ -236,11 +236,13 @@ body:not(.dark) .mode-toggle .fa-sun {
    gap: 20px;
 }
 
+/* Updated Service Card Styles */
 .service-card {
    background-color: var(--card-background);
    border-radius: 8px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    padding: 20px;
+   margin-bottom: 20px;
 }
 
 .card-header {
@@ -256,14 +258,35 @@ body:not(.dark) .mode-toggle .fa-sun {
 }
 
 .service-select,
-.service-form input,
-.service-form button {
+.service-form input[type="number"],
+.service-form button,
+.add-to-cart-button {
    width: 100%;
    padding: 10px;
    margin-bottom: 10px;
    border: 1px solid var(--primary-color);
    border-radius: 5px;
    font-size: 16px;
+   background-color: var(--background-color);
+   color: var(--text-color);
+}
+
+.service-select:focus,
+.service-form input[type="number"]:focus {
+   outline: none;
+   border-color: var(--accent-color);
+   box-shadow: 0 0 0 2px rgba(255, 131, 85, 0.2);
+}
+
+.add-to-cart-button {
+   background-color: var(--primary-color);
+   color: var(--light-text-color);
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+   background-color: var(--secondary-color);
 }
 
 .price-table table {
@@ -284,6 +307,7 @@ body:not(.dark) .mode-toggle .fa-sun {
    color: white;
 }
 
+/* Updated Cart Styles */
 #cart-container {
    background-color: var(--card-background);
    border-radius: 8px;
@@ -294,6 +318,7 @@ body:not(.dark) .mode-toggle .fa-sun {
 
 #cart-container h3 {
    margin-bottom: 15px;
+   color: var(--primary-color);
 }
 
 #cart-container ul {
@@ -422,6 +447,64 @@ body:not(.dark) .mode-toggle .fa-sun {
 
 .dot.active {
    background-color: var(--primary-color);
+}
+
+/* FAQ Section */
+.faq {
+   padding: 40px 0;
+   background-color: var(--background-color);
+}
+
+.faq h2 {
+   text-align: center;
+   margin-bottom: 30px;
+   color: var(--primary-color);
+}
+
+.faq-list {
+   max-width: 800px;
+   margin: 0 auto;
+}
+
+.faq-item {
+   margin-bottom: 15px;
+   border: 1px solid var(--accent-color);
+   border-radius: 5px;
+   overflow: hidden;
+}
+
+.faq-question {
+   background-color: var(--card-background);
+   color: var(--text-color);
+   padding: 15px;
+   cursor: pointer;
+   font-weight: bold;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.faq-question::after {
+   content: '+';
+   font-size: 20px;
+   transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+   transform: rotate(45deg);
+}
+
+.faq-answer {
+   background-color: var(--background-color);
+   padding: 0 15px;
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+   padding: 15px;
+   max-height: 1000px;
 }
 
 /* Contact Section */
@@ -609,6 +692,7 @@ footer {
 
 /* Modal Styles */
 .modal {
+   display: none;
    position: fixed;
    z-index: 1001;
    left: 0;
@@ -619,50 +703,78 @@ footer {
    background-color: rgba(0,0,0,0.4);
 }
 
+/* Modal Styles */
 .modal-content {
    background-color: var(--background-color);
    margin: 15% auto;
    padding: 20px;
-   border: 1px solid #888;
+   border: 1px solid var(--accent-color);
    width: 90%;
-   max-width: 400px;
-   border-radius: 5px;
+   max-width: 500px;
+   border-radius: 8px;
    position: relative;
 }
 
-.close-button {
-   color: #aaa;
+.close {
+   color: var(--text-color);
    float: right;
    font-size: 28px;
    font-weight: bold;
    cursor: pointer;
 }
 
-.spinner {
-   border: 4px solid #f3f3f3;
-   border-top: 4px solid var(--primary-color);
-   border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   animation: spin 1s linear infinite;
-   margin: 20px auto;
-}
-
-@keyframes spin {
-   0% { transform: rotate(0deg); }
-   100% { transform: rotate(360deg); }
-}
-
-.ok-button {
-   background-color: var(--primary-color);
-   color: white;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 4px;
+.close:hover,
+.close:focus {
+   color: var(--primary-color);
+   text-decoration: none;
    cursor: pointer;
-   float: right;
-   margin-top: 10px;
 }
+
+.modal-content h2 {
+   color: var(--primary-color);
+   margin-bottom: 20px;
+}
+
+#checkout-form input,
+#checkout-form textarea {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 15px;
+   border: 1px solid var(--accent-color);
+   border-radius: 5px;
+   font-size: 16px;
+   background-color: var(--background-color);
+   color: var(--text-color);
+}
+
+#checkout-form textarea {
+   height: 100px;
+   resize: vertical;
+}
+
+#checkout-form input:focus,
+#checkout-form textarea:focus {
+   outline: none;
+   border-color: var(--primary-color);
+   box-shadow: 0 0 0 2px rgba(77, 148, 255, 0.2);
+}
+
+#checkout-form button {
+   width: 100%;
+   padding: 10px;
+   background-color: var(--primary-color);
+   color: var(--light-text-color);
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#checkout-form button:hover {
+   background-color: var(--secondary-color);
+}
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -723,9 +835,35 @@ footer {
        padding: 15px;
    }
 
+   .service-select,
+   .service-form input,
+   .service-form button {
+       font-size: 14px;
+   }
+
+   .price-table th,
+   .price-table td {
+       padding: 6px;
+       font-size: 14px;
+   }
+
+   #cart-container li {
+       flex-direction: column;
+       align-items: flex-start;
+   }
+
+   #cart-container button {
+       margin-top: 10px;
+   }
+
    .testimonial-nav {
        padding: 6px 10px;
        font-size: 14px;
+   }
+
+   .faq-question {
+       font-size: 16px;
+       padding: 12px;
    }
 
    #contact-form input,
@@ -759,5 +897,26 @@ footer {
 
    .feature {
        flex-basis: calc(50% - 15px);
+   }
+
+   .faq-list {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+   }
+
+   .faq-item {
+       width: calc(50% - 10px);
+   }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+   .service-grid {
+       grid-template-columns: repeat(2, 1fr);
+   }
+
+   .footer-content {
+       grid-template-columns: repeat(2, 1fr);
    }
 }
