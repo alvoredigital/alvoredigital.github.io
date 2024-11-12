@@ -97,59 +97,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Checkout form submission
-    checkoutForm.addEventListener('submit', (e) => {
+    // Form submission
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const customerName = document.getElementById('customer-name').value;
-        const customerEmail = document.getElementById('customer-email').value;
-        const customerPhone = document.getElementById('customer-phone').value;
-        const customerInstagram = document.getElementById('customer-instagram').value;
-        const customerNotes = document.getElementById('customer-notes').value;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
 
-        if (!customerName || !customerEmail || !customerPhone) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return;
-        }
-
-        const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-
-        const formData = new FormData();
-        formData.append('name', customerName);
-        formData.append('email', customerEmail);
-        formData.append('phone', customerPhone);
-        formData.append('instagram', customerInstagram);
-        formData.append('notes', customerNotes);
-        formData.append('total', total);
-        formData.append('items', JSON.stringify(cart));
-
-        // Send order data to Google Forms
-        fetch('https://script.google.com/macros/s/AKfycbwa_Ol2oG-Q9J-1A3LMXUjXqS1vCF6ccPQoiVKCziX006U5FhZWU9XRxuE3vEiMKJaV/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                const orderId = data.orderId;
-                const message = `Olá! Acabei de fazer um pedido (ID: ${orderId}) no valor de R$ ${total}. Gostaria de mais informações sobre o andamento do meu pedido.`;
-                const whatsappLink = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
-                
-                alert(`Pedido enviado com sucesso! Seu número de pedido é: ${orderId}`);
-                window.open(whatsappLink, '_blank');
-
-                // Clear the cart and close the modal
-                cart = [];
-                updateCart();
-                checkoutModal.style.display = 'none';
-            } else {
-                alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro ao enviar o pedido. Por favor, tente novamente.');
-        });
+        // Simulate form submission (replace with actual API call)
+        simulateFormSubmission(data)
+            .then(response => {
+                alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
+                form.reset();
+            })
+            .catch(error => {
+                alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+            });
     });
+
+    // Simulate form submission (replace with actual API call)
+    function simulateFormSubmission(data) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() > 0.1) { // 90% success rate
+                    resolve({ success: true });
+                } else {
+                    reject(new Error('Submission failed'));
+                }
+            }, 1000);
+        });
+    }
 
     // Newsletter form submission
     const newsletterForm = document.getElementById('newsletter-form');
