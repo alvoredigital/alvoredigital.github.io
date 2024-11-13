@@ -182,7 +182,7 @@ const socialMediaPlatforms = [
  ];
  
  let cart = [];
- 
+
  function createCard(platform) {
      const card = document.createElement('div');
      card.className = 'service-card';
@@ -304,34 +304,73 @@ const socialMediaPlatforms = [
      modal.style.display = 'none';
  }
  
- function checkout(event) {
-     event.preventDefault();
- 
-     const customerName = document.getElementById('customer-name').value;
-     const customerEmail = document.getElementById('customer-email').value;
-     const customerPhone = document.getElementById('customer-phone').value;
- 
-     if (!customerName || !customerEmail || !customerPhone) {
-         alert('Nome, e-mail e telefone são obrigatórios para finalizar o pedido.');
-         return;
-     }
- 
-     const orderId = 'ORDER-' + Date.now();
-     const orderData = {
-         orderId: orderId,
-         customerName: customerName,
-         customerEmail: customerEmail,
-         items: cart,
-         totalAmount: cart.reduce((total, item) => total + item.price, 0)
-     };
- 
-     sendOrderToGoogleAppsScript(orderData);
+ function clearCheckoutForm() {
+     document.getElementById('customer-name').value = '';
+     document.getElementById('customer-email').value = '';
+     document.getElementById('customer-phone').value = '';
+     document.getElementById('customer-instagram').value = '';
+     document.getElementById('customer-notes').value = '';
  }
  
- async function sendOrderToGoogleAppsScript(orderData) {
+ function showOrderModal() {
+    const modal = document.getElementById('order-modal');
+    const spinner = document.getElementById('order-loading-spinner');
+    const responseMessage = document.getElementById('order-response-message');
+    const okButton = document.getElementById('order-ok-button');
+
+    modal.style.display = 'block';
+    spinner.style.display = 'block';
+    responseMessage.textContent = '';
+    okButton.style.display = 'none';
+
+    // Remove the WhatsApp button if it exists
+    const existingWhatsAppButton = modal.querySelector('.whatsapp-button');
+    if (existingWhatsAppButton) {
+        existingWhatsAppButton.remove();
+    }
+}
+ 
+function updateOrderModal(message, isSuccess, orderId) {
+    const spinner = document.getElementById('order-loading-spinner');
+    const responseMessage = document.getElementById('order-response-message');
+    const okButton = document.getElementById('order-ok-button');
+
+    spinner.style.display = 'none';
+    responseMessage.textContent = message;
+    responseMessage.style.color = isSuccess ? 'green' : 'red';
+    okButton.style.display = 'block';
+
+    if (isSuccess && orderId) {
+        showWhatsAppButton(orderId);
+    }
+}
+ 
+function checkout(event) {
+    event.preventDefault();
+
+    const customerName = document.getElementById('customer-name').value;
+    const customerEmail = document.getElementById('customer-email').value;
+    const customerPhone = document.getElementById('customer-phone').value;
+
+    if (!customerName || !customerEmail || !customerPhone) {
+        alert('Nome, e-mail e telefone são obrigatórios para finalizar o pedido.');
+        return;
+    }
+
+    const orderData = {
+        customerName: customerName,
+        customerEmail: customerEmail,
+        items: cart,
+        totalAmount: cart.reduce((total, item) => total + item.price, 0)
+    };
+
+    showOrderModal();
+    sendOrderToGoogleAppsScript(orderData);
+}
+ 
+async function sendOrderToGoogleAppsScript(orderData) {
     try {
         const formData = new FormData();
-        formData.append('orderId', orderData.orderId);
         formData.append('name', orderData.customerName);
         formData.append('email', orderData.customerEmail);
         formData.append('phone', document.getElementById('customer-phone').value);
@@ -345,7 +384,7 @@ const socialMediaPlatforms = [
             price: item.price.toFixed(2)
         }))));
 
-        const response = await fetch('https://script.google.com/macros/s/AKfycbxcflkg36nIcyRlfxFs46mrccfrPdyfWOWG0QrF-Sey1wV00XJAd3rnoVEYv-qSA8s9/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwlF6aPwYAp-PTaHBvIypiiASPJC1OfBd7SQeNdLcwmz7zgpL_yUdWGQO0QMBXo6aTs/exec', {
             method: 'POST',
             body: formData,
         });
@@ -357,51 +396,44 @@ const socialMediaPlatforms = [
         const result = await response.json();
 
         if (result.result === 'success') {
-            alert('Pedido enviado com sucesso! Processando...');
-            checkOrderStatus(orderData.orderId);
+            updateOrderModal('Pedido enviado com sucesso!', true, result.orderId);
             cart = [];
             updateCartDisplay();
             closeCheckoutModal();
+            clearCheckoutForm();
         } else {
             throw new Error(result.message || 'Erro desconhecido ao processar o pedido.');
         }
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao enviar o pedido. Por favor, tente novamente. Se o problema persistir, entre em contato conosco.');
+        updateOrderModal('Erro ao enviar o pedido. Por favor, tente novamente. Se o problema persistir, entre em contato conosco.', false);
     }
 }
 
-function checkOrderStatus(orderId) {
-    setTimeout(async () => {
-        try {
-            const response = await fetch(`https://script.google.com/macros/s/1yhFPsz-f-F4j3I4fhFOSIrRI5nSHXt6nwFSr11CPlvA/exec?orderId=${orderId}`, {
-                method: 'GET'
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
-
-            if (result.status === 'success') {
-                alert('Seu pedido foi processado com sucesso!');
-            } else {
-                alert('Houve um problema com o seu pedido. Por favor, entre em contato conosco.');
-            }
-        } catch (error) {
-            console.error('Erro ao verificar o status do pedido:', error);
-        }
-    }, 5000); // Espera 5 segundos antes de verificar o status
+function showWhatsAppButton(orderId) {
+    const whatsappButton = document.createElement('a');
+    whatsappButton.href = `https://wa.me/5583987084236?text=${encodeURIComponent(`Olá! Acabei de fazer um pedido (ID: ${orderId}) no site Crescer Redes Sociais. Gostaria de confirmar meu pedido.`)}`;
+    whatsappButton.target = '_blank';
+    whatsappButton.className = 'whatsapp-button';
+    whatsappButton.textContent = 'Confirmar Pedido via WhatsApp';
+    
+    const orderModal = document.getElementById('order-modal');
+    const modalContent = orderModal.querySelector('.modal-content');
+    modalContent.appendChild(whatsappButton);
 }
- 
+
+
  document.addEventListener('DOMContentLoaded', () => {
      const platformSelect = document.getElementById('platform-select');
      const container = document.getElementById('social-media-cards');
-     const modal = document.getElementById('checkout-modal');
-     const closeBtn = modal.querySelector('.close');
+     const checkoutModal = document.getElementById('checkout-modal');
+     const closeCheckoutModalBtn = checkoutModal.querySelector('.close');
      const checkoutForm = document.getElementById('checkout-form');
      const checkoutButton = document.getElementById('checkout-button');
+ 
+     const orderModal = document.getElementById('order-modal');
+     const closeOrderModalBtn = document.getElementById('close-order-modal');
+     const orderOkButton = document.getElementById('order-ok-button');
  
      platformSelect.addEventListener('change', (e) => {
          const selectedPlatform = e.target.value;
@@ -415,11 +447,21 @@ function checkOrderStatus(orderId) {
          }
      });
  
-     closeBtn.addEventListener('click', closeCheckoutModal);
+     closeCheckoutModalBtn.addEventListener('click', closeCheckoutModal);
+     closeOrderModalBtn.addEventListener('click', () => {
+         orderModal.style.display = 'none';
+     });
+ 
+     orderOkButton.addEventListener('click', () => {
+         orderModal.style.display = 'none';
+     });
  
      window.addEventListener('click', (event) => {
-         if (event.target === modal) {
+         if (event.target === checkoutModal) {
              closeCheckoutModal();
+         }
+         if (event.target === orderModal) {
+             orderModal.style.display = 'none';
          }
      });
  

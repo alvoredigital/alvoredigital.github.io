@@ -351,7 +351,8 @@
             </div>
         </div>
     </footer>
-    <a href="https://wa.me/5583986914301?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços." target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+
+    <a href="https://wa.me/5583986914301?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços." target="_blank" rel="noopener noreferrer" class="fixed-whatsapp-button">
         <i class="fab fa-whatsapp"></i>
         <span class="sr-only">Chat on WhatsApp</span>
     </a>
@@ -363,6 +364,19 @@
             <div id="loadingSpinner" class="spinner"></div>
             <div id="responseMessage"></div>
             <button id="okButton" class="ok-button hidden">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal para exibir o spinner e a mensagem de sucesso do pedido -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-order-modal">&times;</span>
+            <div id="order-loading-spinner" class="spinner"></div>
+            <p id="order-response-message"></p>
+            <button id="order-ok-button" style="display: none;">OK</button>
+            <a id="whatsapp-confirm" href="#" target="_blank" class="whatsapp-button" style="display: none;">
+                Confirmar Pedido via WhatsApp
+            </a>
         </div>
     </div>
 
