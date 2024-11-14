@@ -669,25 +669,32 @@ footer {
 }
 
 /* WhatsApp Button */
+/* WhatsApp Button */
 .whatsapp-button {
    position: fixed;
-   bottom: 15px;
-   right: 15px;
+   bottom: 20px;
+   right: 20px;
    background-color: var(--whatsapp-color);
    color: #ffffff;
    border-radius: 50%;
-   width: 50px;
-   height: 50px;
+   width: 60px;
+   height: 60px;
    display: flex;
    justify-content: center;
    align-items: center;
    text-decoration: none;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
    z-index: 1000;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+   background-color: var(--whatsapp-hover);
+   transform: scale(1.1);
 }
 
 .whatsapp-button i {
-   font-size: 24px;
+   font-size: 30px;
 }
 
 /* Modal Styles */
@@ -703,7 +710,6 @@ footer {
    background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Styles */
 .modal-content {
    background-color: var(--background-color);
    margin: 15% auto;
@@ -775,6 +781,25 @@ footer {
    background-color: var(--secondary-color);
 }
 
+/* WhatsApp button in order confirmation modal */
+#order-modal .whatsapp-button {
+   display: inline-block;
+   position: static;
+   background-color: var(--whatsapp-color);
+   color: white;
+   padding: 10px 20px;
+   text-decoration: none;
+   border-radius: 5px;
+   font-weight: bold;
+   margin-top: 15px;
+   transition: background-color 0.3s ease;
+   width: 100%;
+   text-align: center;
+}
+
+#order-modal .whatsapp-button:hover {
+   background-color: var(--whatsapp-hover);
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -875,6 +900,32 @@ footer {
    .social-icons a {
        font-size: 22px;
    }
+
+   #order-modal .whatsapp-button {
+       font-size: 14px;
+       padding: 8px 16px;
+   }
+
+   /* Center the modal */
+   .modal-content {
+       margin: 0;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       max-height: 90vh;
+       overflow-y: auto;
+   }
+   .whatsapp-button {
+      width: 50px;
+      height: 50px;
+      bottom: 15px;
+      right: 15px;
+   }
+
+   .whatsapp-button i {
+      font-size: 24px;
+   }
 }
 
 /* Landscape orientation for mobile devices */
@@ -919,4 +970,32 @@ footer {
    .footer-content {
        grid-template-columns: repeat(2, 1fr);
    }
+}
+
+/* Estilos para o botão fixo do WhatsApp */
+.fixed-whatsapp-button {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   background-color: #25D366;
+   color: #ffffff;
+   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+   transition: all 0.3s ease;
+   z-index: 1000;
+}
+
+.fixed-whatsapp-button:hover {
+   background-color: #128C7E;
+   transform: scale(1.1);
+}
+
+.fixed-whatsapp-button i {
+   font-size: 30px;
 }

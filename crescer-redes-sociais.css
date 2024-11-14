@@ -323,7 +323,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    flex: 1;
 }
 
-
 .cart {
    background-color: var(--background-color);
    padding: 2rem 0;
@@ -462,7 +461,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    background-color: var(--secondary-color);
 }
 
-
 /* Order Modal */
 .spinner {
    border: 4px solid #f3f3f3;
@@ -516,32 +514,49 @@ html:not(.dark) .mode-toggle .fa-sun {
    cursor: pointer;
 }
 
+/* Estilos para o botão do WhatsApp no modal */
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+}
+
 /* Estilos para o botão fixo do WhatsApp */
 .fixed-whatsapp-button {
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: #25D366;
-   color: #ffffff;
-   border-radius: 50%;
-   width: 60px;
-   height: 60px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   text-decoration: none;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-   transition: all 0.3s ease;
-   z-index: 1000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .fixed-whatsapp-button:hover {
-   background-color: #128C7E;
-   transform: scale(1.1);
+    background-color: #128C7E;
+    transform: scale(1.1);
 }
 
 .fixed-whatsapp-button i {
-   font-size: 30px;
+    font-size: 30px;
 }
 
 /* Responsive design */
@@ -824,7 +839,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    margin-bottom: 1rem;
 }
 
-
 /* Testimonials Section */
 .testimonials {
    padding: 4rem 0;
@@ -915,7 +929,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    background-color: var(--primary-color);
 }
 
-
 /* Perguntas Frequentes */
 .faq {
    padding: 60px 0;
@@ -983,7 +996,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    max-height: 1000px; /* Ajuste este valor conforme necessário */
    padding: 20px;
 }
-
 
 /* Contact Section */
 .contact-content {
@@ -1077,43 +1089,43 @@ html:not(.dark) .mode-toggle .fa-sun {
 
 .contact-info p {
    margin-bottom: 20px;
+   font-size: 16px;
+   line-height: 1.6;
+   color: var(--text-color);
+}
+
+.contact-info ul {
+   list-style: none;
+   padding: 0;
+}
+
+.contact-info li {
+   margin-bottom: 15px;
    display: flex;
    align-items: center;
-   font-size: 16px;
 }
 
 .contact-info i {
    margin-right: 15px;
+   font-size: 20px;
+   color: var(--primary-color);
+}
+
+.social-links {
+   margin-top: 30px;
+}
+
+.social-links a {
+   display: inline-block;
+   margin-right: 15px;
    color: var(--primary-color);
    font-size: 24px;
-   width: 30px;
-}
-
-.contact-info a {
-   color: var(--text-color);
-   text-decoration: none;
-}
-
-.contact-info a:hover {
-   text-decoration: underline;
-   color: var(--primary-color);
-}
-
-.social-icons {
-   margin-top: 40px;
-}
-
-.social-icons a {
-   color: var(--primary-color);
-   font-size: 28px;
-   margin-right: 20px;
    transition: color 0.3s ease;
 }
 
-.social-icons a:hover {
-   color: var(--color-icons-contact);
+.social-links a:hover {
+   color: var(--hover-color);
 }
-
 
 /* Footer */
 footer {
@@ -1245,54 +1257,72 @@ footer {
    font-weight: bold;
 }
 
-/* Scroll-tracking functionality */
-.scroll-section {
-   position: relative;
-}
+/* Responsive design */
+@media (max-width: 768px) {
+   .container {
+       padding: 0 10px;
+   }
 
-.scroll-section::before {
-   content: '';
-   display: block;
-   height: 80px;
-   margin-top: -80px;
-   visibility: hidden;
-   pointer-events: none;
-}
+   header .container {
+       flex-direction: column;
+       align-items: flex-start;
+   }
 
-/* Estilos para o botão do WhatsApp no modal */
-.whatsapp-button {
-   display: inline-block;
-   background-color: #25D366;
-   color: white;
-   padding: 10px 20px;
-   text-decoration: none;
-   border-radius: 5px;
-   font-weight: bold;
-   margin-top: 10px;
-   transition: background-color 0.3s ease;
-}
+   nav {
+       margin-top: 20px;
+   }
 
-.whatsapp-button:hover {
-   background-color: #128C7E;
-}
+   nav ul {
+       flex-direction: column;
+   }
 
-/* Accessibility */
-.whatsapp-button .sr-only {
-   position: absolute;
-   width: 1px;
-   height: 1px;
-   padding: 0;
-   margin: -1px;
-   overflow: hidden;
-   clip: rect(0, 0, 0, 0);
-   white-space: nowrap;
-   border-width: 0;
+   nav ul li {
+       margin: 10px 0;
+   }
+
+   .menu-toggle {
+       display: block;
+   }
+
+   .hero h1 {
+       font-size: 36px;
+   }
+
+   .hero .typing-text {
+       font-size: 18px;
+   }
+
+   .cta-button {
+       font-size: 16px;
+       padding: 12px 24px;
+   }
+
+   .two-column-layout {
+       flex-direction: column;
+   }
+
+   .left-column,
+   .right-column {
+       width: 100%;
+   }
+
+   .footer-content {
+       flex-direction: column;
+   }
+
+   .footer-section {
+       margin-bottom: 2rem;
+   }
 }
 
 /* Animations */
 @keyframes fadeIn {
-   from { opacity: 0; }
-   to { opacity: 1; }
+   from {
+       opacity: 0;
+   }
+   to {
+       opacity: 1;
+   }
 }
 
 .fade-in {
@@ -1329,172 +1359,62 @@ footer {
    animation: slideInFromRight 1s ease-out;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-   header .container {
-       flex-direction: column;
-       align-items: flex-start;
+@keyframes scaleIn {
+   0% {
+       transform: scale(0.8);
+       opacity: 0;
    }
-
-   nav {
-       display: none;
-       width: 100%;
-   }
-
-   nav.active {
-       display: block;
-   }
-
-   nav ul {
-       flex-direction: column;
-   }
-
-   nav ul li {
-       margin: 10px 0;
-   }
-
-   .menu-toggle {
-       display: block;
-   }
-
-   .hero h1 {
-       font-size: 2rem;
-   }
-
-   .hero p {
-       font-size: 1rem;
-   }
-
-   .service-grid {
-       grid-template-columns: 1fr;
-   }
-
-   .about-features {
-       flex-direction: column;
-   }
-
-   .feature {
-       flex-basis: 100%;
-   }
-
-   .contact-content {
-       flex-direction: column;
-   }
-
-   #contact-form,
-   .contact-info {
-       max-width: 100%;
-   }
-
-   .footer-content {
-       grid-template-columns: 1fr;
-   }
-
-   .footer-bottom {
-       flex-direction: column;
-       text-align: center;
-   }
-
-   .footer-bottom ul {
-       margin-top: 10px;
-   }
-
-   .footer-bottom ul li {
-       margin: 0 10px;
+   100% {
+       transform: scale(1);
+       opacity: 1;
    }
 }
 
-/* Modal Styles */
-.modal {
-   display: none;
-   position: fixed;
-   z-index: 1001;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto;
-   background-color: rgba(0,0,0,0.4);
+.scale-in {
+   animation: scaleIn 0.5s ease-out;
 }
 
-.modal-content {
-   background-color: var(--background-color);
-   margin: 15% auto;
-   padding: 20px;
-   border: 1px solid #888;
-   width: 80%;
-   max-width: 500px;
-   border-radius: 5px;
-   position: relative;
-}
-
-/* Estilos atualizados para o modal */
-.modal-content {
-   background-color: var(--background-color);
-   margin: 15% auto;
-   padding: 20px;
-   border: 1px solid #888;
-   width: 80%;
-   max-width: 500px;
-   border-radius: 5px;
-   position: relative;
-   text-align: center;
-}
-
+/* Estilos para o botão do WhatsApp no modal de confirmação de pedido */
 #order-modal .whatsapp-button {
-   display: inline-block;
-   margin-top: 15px;
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.close-button {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
-   cursor: pointer;
+#order-modal .whatsapp-button:hover {
+    background-color: #128C7E;
 }
 
-.close-button:hover,
-.close-button:focus {
-   color: #000;
-   text-decoration: none;
-   cursor: pointer;
+/* Estilos para o botão fixo do WhatsApp */
+.fixed-whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
-.spinner {
-   border: 4px solid #f3f3f3;
-   border-top: 4px solid var(--primary-color);
-   border-radius: 50%;
-   width: 40px;
-   height: 40px;
-   animation: spin 1s linear infinite;
-   margin: 20px auto;
+.fixed-whatsapp-button:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
 }
 
-@keyframes spin {
-   0% { transform: rotate(0deg); }
-   100% { transform: rotate(360deg); }
-}
-
-.hidden {
-   display: none;
-}
-
-.show {
-   display: block;
-}
-
-.ok-button {
-   background-color: var(--primary-color);
-   color: white;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
-   float: right;
-   margin-top: 10px;
-}
-
-.ok-button:hover {
-   background-color: var(--hover-color);
+.fixed-whatsapp-button i {
+    font-size: 30px;
 }
