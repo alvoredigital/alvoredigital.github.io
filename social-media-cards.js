@@ -338,7 +338,7 @@ function updateOrderModal(message, isSuccess, orderId) {
     spinner.style.display = 'none';
     responseMessage.textContent = message;
     responseMessage.style.color = isSuccess ? 'green' : 'red';
-    okButton.style.display = 'block';
+    okButton.style.display = 'none';
 
     if (isSuccess && orderId) {
         showWhatsAppButton(orderId);
