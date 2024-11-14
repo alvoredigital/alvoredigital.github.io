@@ -26,15 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                console.error(`Element with id "${targetId}" not found`);
+            }
         });
     });
 
@@ -72,24 +77,27 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', changeLinkState);
 
     // FAQ functionality
-    const faqItems = document.querySelectorAll('.faq-item');
-    
+    const faqItems = document.querySelectorAll('.faq-list');
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         
         question.addEventListener('click', () => {
-            // Close all other items
+            const isOpen = item.classList.contains('active');
+            
+            // Fecha todas as outras perguntas
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
-                    otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    otherItem.querySelector('.faq-answer').style.maxHeight = '300px';
                 }
             });
 
-            // Toggle the clicked item
+            // Abre ou fecha a pergunta clicada
             item.classList.toggle('active');
-            if (item.classList.contains('active')) {
+            
+            if (!isOpen) {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             } else {
                 answer.style.maxHeight = '0';

@@ -1,7 +1,7 @@
 const socialMediaPlatforms = [
     { 
         name: 'Instagram', 
-        logo: 'blog/assets/img/instagram-logo.png',
+        logo: '<i class="fab fa-instagram instagram-icon"></i>',
         services: {
             Seguidores: [
                 { quantity: 100, price: 7.60 },
@@ -31,7 +31,7 @@ const socialMediaPlatforms = [
     },
     { 
         name: 'Facebook', 
-        logo: 'blog/assets/img/facebook-logo.png',
+        logo: '<i class="fab fa-facebook facebook-icon"></i>',
         services: {
             Seguidores: [
                 { quantity: 100, price: 6.80 },
@@ -61,7 +61,7 @@ const socialMediaPlatforms = [
     },
     { 
         name: 'TikTok', 
-        logo: 'blog/assets/img/tiktok-logo.png',
+        logo: '<i class="fab fa-tiktok tiktok-icon"></i>',
         services: {
             Seguidores: [
                 { quantity: 100, price: 8.20 },
@@ -91,7 +91,7 @@ const socialMediaPlatforms = [
     },
     { 
         name: 'Kwai', 
-        logo: 'blog/assets/img/kwai-logo.png',
+        logo: `<img src="blog/assets/img/logo-kwai-icon-1024.png" class="kwai-icon" alt="Logo Kwai">`,
         services: {
             Seguidores: [
                 { quantity: 100, price: 7.00 },
@@ -121,7 +121,7 @@ const socialMediaPlatforms = [
     },
     { 
         name: 'YouTube', 
-        logo: 'blog/assets/img/youtube-logo.png',
+        logo: '<i class="fab fa-youtube youtube-icon"></i>',
         services: {
             Inscritos: [
                 { quantity: 100, price: 9.00 },
@@ -151,7 +151,7 @@ const socialMediaPlatforms = [
     },
     { 
         name: 'Twitter', 
-        logo: 'blog/assets/img/twitter-logo.png',
+        logo: '<i class="fab fa-twitter twitter-icon"></i>',
         services: {
             Seguidores: [
                 { quantity: 100, price: 7.20 },
@@ -189,7 +189,7 @@ const socialMediaPlatforms = [
      card.innerHTML = `
          <div class="card-header">
              <h3>${platform.name}</h3>
-             <img src="${platform.logo}" alt="${platform.name} logo" class="platform-logo">
+             ${platform.logo}
          </div>
          <select class="service-select">
              <option value="">Selecione um serviço</option>
