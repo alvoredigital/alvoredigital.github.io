@@ -1,20 +1,31 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
 /* Base styles */
 :root {
    --primary-color: #4d94ff;
    --secondary-color: #0C315C;
    --accent-color: #ff8355;
+   --accent-color-footer: #c6c6c6;
    --background-color: #f2f7fc;
    --text-color: #0C315C;
    --light-text-color: #ffffff;
    --card-background: #ffffff;
    --whatsapp-color: #25D366;
    --whatsapp-hover: #128C7E;
+   
+   /* Font variables */
+   --heading-font: 'Montserrat', sans-serif;
+   --body-font: 'Roboto', sans-serif;
+   --accent-font: 'Lato', sans-serif;
+   --alternative-font: 'Open Sans', sans-serif;
 }
 
 .dark {
    --primary-color: #1E79E4;
-   --secondary-color: #ff944d;
+   --secondary-color: #0C315C;
    --accent-color: #2a2a2a;
+   --accent-color-footer: #2a2a2a;
    --background-color: #1a1a1a;
    --text-color: #f5f5f5;
    --light-text-color: #ffffff;
@@ -28,11 +39,11 @@
 }
 
 body {
-   font-family: 'Poppins', sans-serif;
+   font-family: var(--body-font);
    line-height: 1.6;
    color: var(--text-color);
    background-color: var(--background-color);
-   font-size: 16px;
+   font-size: 18px;
 }
 
 .container {
@@ -48,13 +59,14 @@ header {
    position: fixed;
    width: 100%;
    z-index: 1000;
+   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 header .container {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 10px 0;
+   padding: 10px 20px;
 }
 
 .logo img {
@@ -92,6 +104,7 @@ nav ul li {
 }
 
 nav ul li a {
+   font-family: var(--heading-font);
    text-decoration: none;
    color: var(--text-color);
    font-weight: 500;
@@ -99,6 +112,7 @@ nav ul li a {
    padding: 10px;
    display: block;
    width: 100%;
+   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 nav ul li a:hover,
@@ -125,7 +139,7 @@ nav ul li a.active {
 
 .menu-toggle.active span:nth-child(1) {
    transform: rotate(-45deg) translate(-5px, 6px);
-   background-color: #ff0000;
+   background-color: tomato;
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -134,7 +148,7 @@ nav ul li a.active {
 
 .menu-toggle.active span:nth-child(3) {
    transform: rotate(45deg) translate(-5px, -6px);
-   background-color: #ff0000;
+   background-color: tomato;
 }
 
 .mode-toggle {
@@ -143,19 +157,31 @@ nav ul li a.active {
    background: none;
    border: none;
    color: var(--text-color);
+   transition: color 0.3s ease;
 }
 
-.mode-toggle .fa-sun,
-.mode-toggle .fa-moon {
+.mode-toggle:hover {
+   color: var(--primary-color);
+}
+
+.mode-toggle i {
+   transition: opacity 0.3s ease;
+}
+
+html:not(.dark) .mode-toggle .fa-moon {
+   display: inline-block;
+}
+
+html:not(.dark) .mode-toggle .fa-sun {
    display: none;
 }
 
-.dark .mode-toggle .fa-moon {
+.dark .mode-toggle .fa-sun {
    display: inline-block;
 }
 
-body:not(.dark) .mode-toggle .fa-sun {
-   display: inline-block;
+.dark .mode-toggle .fa-moon {
+   display: none;
 }
 
 /* Hero Section */
@@ -163,25 +189,52 @@ body:not(.dark) .mode-toggle .fa-sun {
    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('blog/assets/img/banner-redes-sociais-02.jpg');
    background-size: cover;
    background-position: center;
-   padding: 60px 0;
+   height: 70vh;
+   display: flex;
+   align-items: center;
    text-align: center;
    color: #ffffff;
 }
 
 .hero-content {
    max-width: 100%;
+   padding: 0 20px;
 }
 
 .hero h1 {
-   font-size: 32px;
+   font-family: var(--heading-font);
+   font-size: 36px;
    font-weight: 700;
    margin-bottom: 20px;
 }
 
 .hero .typing-text {
-   font-size: 18px;
+   font-family: var(--accent-font);
+   font-size: 20px;
    margin-bottom: 30px;
-   min-height: 60px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.typing-animation {
+   max-width: 100%;
+   overflow: hidden;
+   white-space: normal;
+   word-wrap: break-word;
+   font-size: 18px;
+}
+
+.typing-animation::after {
+   content: '|';
+   animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+   0% { opacity: 1; }
+   50% { opacity: 0; }
+   100% { opacity: 1; }
 }
 
 .cta-button {
@@ -192,25 +245,35 @@ body:not(.dark) .mode-toggle .fa-sun {
    border-radius: 5px;
    text-decoration: none;
    font-weight: bold;
-   font-size: 16px;
+   font-size: 18px;
+   transition: background-color 0.3s ease;
+   margin-top: 30px;
+}
+
+.cta-button:hover {
+   background-color: var(--secondary-color);
 }
 
 /* Services and Cart Section */
 .services-and-cart {
    padding: 40px 0;
+   background-color: var(--background-color);
 }
 
 .services-and-cart h2 {
+   font-family: var(--heading-font);
    text-align: center;
-   font-size: 24px;
+   font-size: 28px;
    margin-bottom: 20px;
    color: var(--primary-color);
 }
 
 .section-description {
+   font-family: var(--body-font);
    text-align: center;
    margin-bottom: 30px;
-   font-size: 16px;
+   font-size: 18px;
+   color: var(--text-color);
 }
 
 .two-column-layout {
@@ -229,6 +292,8 @@ body:not(.dark) .mode-toggle .fa-sun {
    font-size: 16px;
    border-radius: 5px;
    border: 1px solid var(--primary-color);
+   background-color: var(--background-color);
+   color: var(--text-color);
 }
 
 .service-grid {
@@ -236,13 +301,17 @@ body:not(.dark) .mode-toggle .fa-sun {
    gap: 20px;
 }
 
-/* Updated Service Card Styles */
 .service-card {
    background-color: var(--card-background);
    border-radius: 8px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    padding: 20px;
-   margin-bottom: 20px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card-header {
@@ -255,6 +324,7 @@ body:not(.dark) .mode-toggle .fa-sun {
 .platform-logo {
    width: 40px;
    height: 40px;
+   object-fit: contain;
 }
 
 .service-select,
@@ -289,10 +359,13 @@ body:not(.dark) .mode-toggle .fa-sun {
    background-color: var(--secondary-color);
 }
 
+.price-table {
+   margin-bottom: 15px;
+}
+
 .price-table table {
    width: 100%;
    border-collapse: collapse;
-   margin-bottom: 15px;
 }
 
 .price-table th,
@@ -307,7 +380,6 @@ body:not(.dark) .mode-toggle .fa-sun {
    color: white;
 }
 
-/* Updated Cart Styles */
 #cart-container {
    background-color: var(--card-background);
    border-radius: 8px;
@@ -317,8 +389,10 @@ body:not(.dark) .mode-toggle .fa-sun {
 }
 
 #cart-container h3 {
+   font-family: var(--heading-font);
    margin-bottom: 15px;
    color: var(--primary-color);
+   font-size: 24px;
 }
 
 #cart-container ul {
@@ -343,6 +417,11 @@ body:not(.dark) .mode-toggle .fa-sun {
    padding: 5px 10px;
    border-radius: 3px;
    cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#cart-container button:hover {
+   background-color: var(--secondary-color);
 }
 
 /* About Section */
@@ -350,11 +429,17 @@ body:not(.dark) .mode-toggle .fa-sun {
    background-color: var(--secondary-color);
    color: var(--light-text-color);
    padding: 40px 0;
+   text-align: center;
 }
 
 .about h2 {
-   text-align: center;
+   font-family: var(--heading-font);
    margin-bottom: 20px;
+   font-size: 28px;
+}
+
+.about-p {
+   margin: 34px auto 28px;
 }
 
 .about-features {
@@ -365,6 +450,7 @@ body:not(.dark) .mode-toggle .fa-sun {
 
 .feature {
    text-align: center;
+   margin: 20px auto 10px;
 }
 
 .feature i {
@@ -376,11 +462,14 @@ body:not(.dark) .mode-toggle .fa-sun {
 /* Testimonials Section */
 .testimonials {
    padding: 40px 0;
+   background-color: var(--background-color);
 }
 
 .testimonials h2 {
+   font-family: var(--heading-font);
    text-align: center;
    margin-bottom: 20px;
+   font-size: 28px;
 }
 
 .testimonial-slider {
@@ -420,6 +509,11 @@ body:not(.dark) .mode-toggle .fa-sun {
    cursor: pointer;
    font-size: 16px;
    border-radius: 50%;
+   transition: background-color 0.3s ease;
+}
+
+.testimonial-nav:hover {
+   background-color: var(--secondary-color);
 }
 
 .testimonial-nav.prev {
@@ -443,6 +537,7 @@ body:not(.dark) .mode-toggle .fa-sun {
    border-radius: 50%;
    margin: 0 5px;
    cursor: pointer;
+   transition: background-color 0.3s ease;
 }
 
 .dot.active {
@@ -456,9 +551,11 @@ body:not(.dark) .mode-toggle .fa-sun {
 }
 
 .faq h2 {
+   font-family: var(--heading-font);
    text-align: center;
    margin-bottom: 30px;
    color: var(--primary-color);
+   font-size: 28px;
 }
 
 .faq-list {
@@ -474,6 +571,7 @@ body:not(.dark) .mode-toggle .fa-sun {
 }
 
 .faq-question {
+   font-family: var(--accent-font);
    background-color: var(--card-background);
    color: var(--text-color);
    padding: 15px;
@@ -482,32 +580,49 @@ body:not(.dark) .mode-toggle .fa-sun {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   position: relative;
+   font-size: 18px;
 }
 
 .faq-question::after {
    content: '+';
    font-size: 20px;
    transition: transform 0.3s ease;
+   position: absolute;
+   right: 15px;
+}
+
+.faq-toggle {
+   display: none;
 }
 
 .faq-item.active .faq-question::after {
-   transform: rotate(45deg);
+   content: '\00d7';
+   transform: rotate(0);
 }
 
 .faq-answer {
    background-color: var(--background-color);
    padding: 0 15px;
-   max-height: 0;
-   overflow: hidden;
-   transition: max-height 0.3s ease, padding 0.3s ease;
+   height: 0;
+   overflow: scroll;
+   transition: height 0.3s ease, padding 0.3s ease;
+   font-size: 16px;
 }
 
 .faq-item.active .faq-answer {
    padding: 15px;
-   max-height: 1000px;
+   height: auto;
 }
 
 /* Contact Section */
+.contact h2 {
+   font-family: var(--heading-font);
+   text-align: center;
+   padding: 20px 0 30px;
+   font-size: 28px;
+}
+
 .contact-content {
    display: flex;
    flex-direction: column;
@@ -521,6 +636,7 @@ body:not(.dark) .mode-toggle .fa-sun {
 
 #contact-form h3,
 .contact-info h3 {
+   font-family: var(--heading-font);
    font-size: 24px;
    margin-bottom: 20px;
    color: var(--primary-color);
@@ -535,10 +651,13 @@ body:not(.dark) .mode-toggle .fa-sun {
    border: 1px solid var(--accent-color);
    border-radius: 5px;
    font-size: 16px;
+   background-color: var(--background-color);
+   color: var(--text-color);
 }
 
 #contact-form textarea {
    height: 120px;
+   resize: vertical;
 }
 
 #contact-form button {
@@ -548,14 +667,20 @@ body:not(.dark) .mode-toggle .fa-sun {
    padding: 12px 24px;
    border-radius: 5px;
    cursor: pointer;
-   font-size: 16px;
+   font-size: 18px;
    font-weight: 500;
+   transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+   background-color: var(--secondary-color);
 }
 
 .contact-info p {
    margin-bottom: 15px;
    display: flex;
    align-items: center;
+   font-size: 16px;
 }
 
 .contact-info i {
@@ -565,19 +690,31 @@ body:not(.dark) .mode-toggle .fa-sun {
    width: 24px;
 }
 
+.contact-info a {
+   color: var(--primary-color);
+}
+
 .social-icons {
-   margin-top: 20px;
+   margin: 40px auto 30px;
+   text-align: center;
 }
 
 .social-icons a {
    color: var(--primary-color);
    font-size: 24px;
    margin-right: 15px;
+   transition: color 0.3s ease;
+}
+
+.social-icons i {
+   margin: 4px 15px;
+   color: var(--primary-color);
+   font-size: 30px;
 }
 
 /* Footer */
 footer {
-   background-color: var(--accent-color);
+   background-color: var(--accent-color-footer);
    color: var(--text-color);
    padding: 40px 0 20px;
 }
@@ -592,15 +729,20 @@ footer {
    text-align: center;
 }
 
+.footer-p-slogan {
+   font-size: 20px;
+}
+
 .footer-logo img {
-   height: 100px;
+   height: 160px;
    margin-bottom: 15px;
 }
 
 .footer-links h4,
 .footer-services h4,
 .footer-newsletter h4 {
-   font-size: 18px;
+   font-family: var(--heading-font);
+   font-size: 20px;
    margin-bottom: 15px;
 }
 
@@ -618,6 +760,12 @@ footer {
 .footer-services ul li {
    color: var(--text-color);
    text-decoration: none;
+   transition: color 0.3s ease;
+   font-size: 16px;
+}
+
+.footer-links ul li a:hover {
+   color: var(--primary-color);
 }
 
 #newsletter-form {
@@ -627,18 +775,27 @@ footer {
 
 #newsletter-form .newslatter-input {
    flex: 1;
-   padding: 8px;
+   padding: 10px;
    border: none;
+   font-size: 14px;
    border-radius: 3px 0 0 3px;
+   background-color: var(--background-color);
+   color: var(--text-color);
 }
 
 #newsletter-form .cta-button-footer {
    background-color: var(--primary-color);
    color: var(--light-text-color);
-   padding: 8px 16px;
+   padding: 10px 16px;
    border: none;
    border-radius: 0 3px 3px 0;
    cursor: pointer;
+   transition: background-color 0.3s ease;
+   font-size: 14px;
+}
+
+#newsletter-form .cta-button-footer:hover {
+   background-color: var(--secondary-color);
 }
 
 .footer-bottom {
@@ -650,6 +807,10 @@ footer {
 
 .footer-bottom p {
    font-size: 14px;
+}
+
+.link-footer-site {
+   color: var(--primary-color);
 }
 
 .footer-bottom ul {
@@ -666,35 +827,11 @@ footer {
    color: var(--text-color);
    text-decoration: none;
    font-size: 14px;
+   transition: color 0.3s ease;
 }
 
-/* WhatsApp Button */
-/* WhatsApp Button */
-.whatsapp-button {
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: var(--whatsapp-color);
-   color: #ffffff;
-   border-radius: 50%;
-   width: 60px;
-   height: 60px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   text-decoration: none;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-   z-index: 1000;
-   transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.whatsapp-button:hover {
-   background-color: var(--whatsapp-hover);
-   transform: scale(1.1);
-}
-
-.whatsapp-button i {
-   font-size: 30px;
+.footer-bottom ul li a:hover {
+   color: var(--primary-color);
 }
 
 /* Modal Styles */
@@ -719,6 +856,8 @@ footer {
    max-width: 500px;
    border-radius: 8px;
    position: relative;
+   top: 50%;
+   transform: translateY(-50%);
 }
 
 .close {
@@ -737,8 +876,10 @@ footer {
 }
 
 .modal-content h2 {
+   font-family: var(--heading-font);
    color: var(--primary-color);
    margin-bottom: 20px;
+   font-size: 24px;
 }
 
 #checkout-form input,
@@ -772,7 +913,7 @@ footer {
    color: var(--light-text-color);
    border: none;
    border-radius: 5px;
-   font-size: 16px;
+   font-size: 18px;
    cursor: pointer;
    transition: background-color 0.3s ease;
 }
@@ -781,12 +922,11 @@ footer {
    background-color: var(--secondary-color);
 }
 
-/* WhatsApp button in order confirmation modal */
-#order-modal .whatsapp-button {
+/* WhatsApp Button */
+.whatsapp-button {
    display: inline-block;
-   position: static;
    background-color: var(--whatsapp-color);
-   color: white;
+   color: #ffffff;
    padding: 10px 20px;
    text-decoration: none;
    border-radius: 5px;
@@ -795,10 +935,27 @@ footer {
    transition: background-color 0.3s ease;
    width: 100%;
    text-align: center;
+   font-size: 16px;
 }
 
-#order-modal .whatsapp-button:hover {
+.whatsapp-button:hover {
    background-color: var(--whatsapp-hover);
+}
+
+/* Spinner */
+.spinner {
+   border: 4px solid #f3f3f3;
+   border-top: 4px solid var(--primary-color);
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   animation: spin 1s linear infinite;
+   margin: 20px auto;
+}
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
 }
 
 /* Animations */
@@ -844,15 +1001,15 @@ footer {
 /* Additional mobile-specific styles */
 @media (max-width: 480px) {
    .hero h1 {
-       font-size: 28px;
+       font-size: 32px;
    }
 
    .hero .typing-text {
-       font-size: 16px;
+       font-size: 18px;
    }
 
    .cta-button {
-       font-size: 14px;
+       font-size: 16px;
        padding: 10px 20px;
    }
 
@@ -863,7 +1020,7 @@ footer {
    .service-select,
    .service-form input,
    .service-form button {
-       font-size: 14px;
+       font-size: 16px;
    }
 
    .price-table th,
@@ -887,14 +1044,14 @@ footer {
    }
 
    .faq-question {
-       font-size: 16px;
+       font-size: 18px;
        padding: 12px;
    }
 
    #contact-form input,
    #contact-form select,
    #contact-form textarea {
-       font-size: 14px;
+       font-size: 16px;
    }
 
    .social-icons a {
@@ -902,29 +1059,25 @@ footer {
    }
 
    #order-modal .whatsapp-button {
-       font-size: 14px;
+       font-size: 16px;
        padding: 8px 16px;
    }
+   .faq-answer {
+      font-size: 16px;
+   }
+   
+   .faq-item.active .faq-answer {
+      padding: 10px 15px;
+   }
 
-   /* Center the modal */
    .modal-content {
        margin: 0;
-       position: absolute;
+       position: fixed;
        top: 50%;
        left: 50%;
        transform: translate(-50%, -50%);
        max-height: 90vh;
        overflow-y: auto;
-   }
-   .whatsapp-button {
-      width: 50px;
-      height: 50px;
-      bottom: 15px;
-      right: 15px;
-   }
-
-   .whatsapp-button i {
-      font-size: 24px;
    }
 }
 
@@ -972,12 +1125,12 @@ footer {
    }
 }
 
-/* Estilos para o botão fixo do WhatsApp */
+/* Fixed WhatsApp button */
 .fixed-whatsapp-button {
    position: fixed;
    bottom: 20px;
    right: 20px;
-   background-color: #25D366;
+   background-color: var(--whatsapp-color);
    color: #ffffff;
    border-radius: 50%;
    width: 60px;
@@ -992,10 +1145,23 @@ footer {
 }
 
 .fixed-whatsapp-button:hover {
-   background-color: #128C7E;
+   background-color: var(--whatsapp-hover);
    transform: scale(1.1);
 }
 
 .fixed-whatsapp-button i {
    font-size: 30px;
+}
+
+@media (max-width: 480px) {
+   .fixed-whatsapp-button {
+      width: 50px;
+      height: 50px;
+      bottom: 15px;
+      right: 15px;
+   }
+
+   .fixed-whatsapp-button i {
+      font-size: 24px;
+   }
 }

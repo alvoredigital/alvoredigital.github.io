@@ -105,37 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form submission
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-
-        // Simulate form submission (replace with actual API call)
-        simulateFormSubmission(data)
-            .then(response => {
-                alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
-                form.reset();
-            })
-            .catch(error => {
-                alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
-            });
-    });
-
-    // Simulate form submission (replace with actual API call)
-    function simulateFormSubmission(data) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (Math.random() > 0.1) { // 90% success rate
-                    resolve({ success: true });
-                } else {
-                    reject(new Error('Submission failed'));
-                }
-            }, 1000);
-        });
-    }
-
     // Newsletter form submission
     const newsletterForm = document.getElementById('newsletter-form');
     const modal = document.getElementById('modal');

@@ -4,6 +4,7 @@
    --primary-color: #4d94ff;
    --secondary-color: #0C315C;
    --accent-color: #ff8355;
+   --accent-color-footer: #c6c6c6;
    --background-color: #f2f7fc;
    --text-color: #0C315C;
    --light-text-color: #ffffff;
@@ -15,8 +16,9 @@
 .dark {
    /* Dark mode colors */
    --primary-color: #1E79E4;
-   --secondary-color: #ff944d;
+   --secondary-color: #0C315C;
    --accent-color: #2a2a2a;
+   --accent-color-footer: #2a2a2a;
    --background-color: #1a1a1a;
    --text-color: #f5f5f5;
    --light-text-color: #ffffff;
@@ -494,6 +496,14 @@ html:not(.dark) .mode-toggle .fa-sun {
    display: none;
 }
 
+#okButton {
+   background-color: var(--primary-color);
+}
+
+#okButton:hover {
+   background-color: var(--secondary-color);
+}
+
 /* Animação para entrada suave do modal */
 @keyframes fadeIn {
    from { opacity: 0; transform: scale(0.9); }
@@ -880,7 +890,8 @@ html:not(.dark) .mode-toggle .fa-sun {
 .about {
    background-color: var(--secondary-color);
    color: var(--light-text-color);
-   padding: 4rem 0;
+   padding: 6rem 0;
+   text-align: center;
 }
 
 .about h2 {
@@ -892,7 +903,7 @@ html:not(.dark) .mode-toggle .fa-sun {
    display: flex;
    justify-content: space-around;
    flex-wrap: wrap;
-   margin-top: 2rem;
+   margin-top: 5rem;
 }
 
 .feature {
@@ -903,7 +914,7 @@ html:not(.dark) .mode-toggle .fa-sun {
 
 .feature i {
    font-size: 3rem;
-   color: var(--accent-color);
+   color: var(--primary-color);
    margin-bottom: 1rem;
 }
 
@@ -1040,10 +1051,6 @@ html:not(.dark) .mode-toggle .fa-sun {
    transition: background-color 0.3s ease;
 }
 
-.faq-question:hover {
-   background-color: var(--hover-color, #f0f0f0);
-}
-
 .faq-question h3 {
    margin: 0;
    font-size: 1rem;
@@ -1106,6 +1113,11 @@ html:not(.dark) .mode-toggle .fa-sun {
 }
 
 /* Contact Section */
+.contact h2 {
+   text-align: center;
+   padding: 40px 0 60px;
+}
+
 .contact-content {
    display: flex;
    justify-content: space-between;
@@ -1118,6 +1130,7 @@ html:not(.dark) .mode-toggle .fa-sun {
 #contact-form {
    flex: 1;
    max-width: 600px;
+   margin-bottom: 40px;
 }
 
 #contact-form h3 {
@@ -1180,8 +1193,8 @@ html:not(.dark) .mode-toggle .fa-sun {
 }
 
 #contact-form button:hover {
-   background-color: var(--hover-color);
-   border-color: var(--border-button-color);
+   background-color: var(--secondary-color);
+   border-color: var(--primary-color);
 }
 
 .contact-info {
@@ -1202,6 +1215,16 @@ html:not(.dark) .mode-toggle .fa-sun {
    color: var(--text-color);
 }
 
+.contact-info p a {
+   color: var(--text-color);
+   text-decoration: none;
+}
+
+.contact-info p a:hover {
+   color: var(--primary-color);
+   text-decoration: underline;
+}
+
 .contact-info ul {
    list-style: none;
    padding: 0;
@@ -1213,31 +1236,30 @@ html:not(.dark) .mode-toggle .fa-sun {
    align-items: center;
 }
 
-.contact-info i {
-   margin-right: 15px;
-   font-size: 20px;
-   color: var(--primary-color);
+.social-icons {
+   margin-top: 40px;
 }
 
-.social-links {
-   margin-top: 30px;
-}
-
-.social-links a {
+.social-icons a {
    display: inline-block;
-   margin-right: 15px;
+   margin-right: 30px;
    color: var(--primary-color);
-   font-size: 24px;
    transition: color 0.3s ease;
 }
 
-.social-links a:hover {
-   color: var(--hover-color);
+.contact-info i {
+   margin-right: 15px;
+   color: var(--primary-color);
+   font-size: 30px;
+}
+
+.social-icons i:hover {
+   color: black;
 }
 
 /* Footer */
 footer {
-   background-color: var(--accent-color);
+   background-color: var(--accent-color-footer);
    color: var(--text-color);
    padding: 60px 0 20px;
 }
