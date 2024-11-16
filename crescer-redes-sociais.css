@@ -1347,7 +1347,7 @@ footer {
 }
 
 #newsletter-form .cta-button-footer:hover {
-   background-color: var(--hover-color);
+   background-color: var(--secondary-color);
 }
 
 .footer-bottom {
