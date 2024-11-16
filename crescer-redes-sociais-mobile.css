@@ -894,7 +894,7 @@ footer {
    width: 90%;
    max-width: 500px;
    border-radius: 8px;
-   position: relative;
+   position: absolute;
    top: 50%;
    transform: translateY(-50%);
 }
