@@ -348,6 +348,39 @@ html:not(.dark) .mode-toggle .fa-sun {
    box-shadow: 0 0 0 2px rgba(255, 131, 85, 0.2);
 }
 
+/* Estilização com cores originais */
+.instagram-icon,
+.facebook-icon,
+.tiktok-icon,
+.kwai-icon,
+.youtube-icon,
+.twitter-icon {
+    font-size: 32px; /* Tamanho maior para os ícones */
+    transition: color 0.2s ease-in-out; /* Transição suave para a cor */
+}
+.kwai-icon {
+      width: 32px;
+      height: 32px;
+}
+
+/* Cores originais dos ícones */
+.instagram-icon { color: #C13584; }
+.facebook-icon { color: #1877F2; }
+.tiktok-icon { color: #000000; }
+.kwai-icon { color: #FF5E00; }
+.youtube-icon { color: #FF0000; }
+.twitter-icon { color: #1DA1F2; }
+
+/* Cor laranja no hover */
+.instagram-icon:hover,
+.facebook-icon:hover,
+.tiktok-icon:hover,
+.kwai-icon:hover,
+.youtube-icon:hover,
+.twitter-icon:hover {
+    color: #FFA500; /* Cor laranja padrão para o hover */
+}
+
 .add-to-cart-button {
    background-color: var(--primary-color);
    color: var(--light-text-color);
@@ -378,6 +411,12 @@ html:not(.dark) .mode-toggle .fa-sun {
 .price-table th {
    background-color: var(--primary-color);
    color: white;
+}
+
+.quantity-selector input {
+   font-size: 16px;
+   padding: 4px;
+   margin: 20px auto 30px;
 }
 
 #cart-container {
@@ -454,9 +493,9 @@ html:not(.dark) .mode-toggle .fa-sun {
 }
 
 .feature i {
-   font-size: 36px;
-   color: var(--accent-color);
-   margin-bottom: 10px;
+   font-size: 3rem;
+   color: var(--primary-color);
+   margin-bottom: 1rem;
 }
 
 /* Testimonials Section */
